@@ -6,14 +6,13 @@
 #    By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/03 20:31:11 by anovio-c          #+#    #+#              #
-#    Updated: 2024/07/03 20:31:08 by anovio-c         ###   ########.fr        #
+#    Updated: 2024/07/04 13:37:44 by anovio-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Setup
 NAME        = cub3d
-LIBFT       = libft/
-MLX         = minilibx/
+LIBFT       = libs/libft/
 LIBFT_A     = $(addprefix $(LIBFT), libft.a)
 MLX_A       = $(addprefix $(MLX), libmlx.a)
 
@@ -22,30 +21,35 @@ UNAME_S     := $(shell uname -s)
 
 # Determine MLX flags based on OS
 ifeq ($(UNAME_S), Linux)
+	MLX			= libs/mlx_linux/
     MXFLAGS     = -L$(MLX) -lmlx -lXext -lX11 -lm -lz
 else ifeq ($(UNAME_S), Darwin)
+	MLX			= libs/minilibx/
     MXFLAGS     = -L$(MLX) -lmlx -framework OpenGL -framework AppKit -lm
 else
     $(error Unsupported OS: $(UNAME_S))
 endif
 
+
 # Commands and flags
 CC          = gcc
-INCLUDE     = includes
-CFLAGS      = -Wall -Wextra -Werror -I$(INCLUDE)
-MLX_CFLAGS  = -Wall -Wextra
+INCLUDE     = includes/cub3d.h libs/libft/libft.h libs/mlx_linux/mlx.h
+CFLAGS      = -Wall -Wextra -Werror
 RM          = rm -rf
 
 # Cub3d files
-SRCS        = src/main.c
+SRCS        =	main.c \
+				parser_map/check_map.c \
+				handle_errors.c
 
-OBJS        = $(SRCS:%.c=%.o)
+OBJS        = $(addprefix obj/, $(SRCS:%.c=%.o))
+DEPS        = $(addprefix obj/, $(SRCS:%.c=%.d))
 
 # Compile the main executable
-all:        $(NAME)
+all:       dir $(NAME)
 
 # Link the main executable
-$(NAME):    $(OBJS) $(LIBFT_A) $(MLX_A) includes/cub3d.h includes/libft.h includes/mlx.h
+$(NAME):    $(OBJS) $(LIBFT_A) $(MLX_A)
 	@$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT) -lft $(MXFLAGS) -o $(NAME)
 	@echo "\033[1;32m\033[1mSuccessfully built $(NAME).\033[0m"
 
@@ -59,15 +63,18 @@ $(MLX_A):
 	@$(MAKE) -s -C $(MLX)
 	@echo "\033[1;32m\033[1mCompiled $(MLX_A).\033[0m"
 
-.c.o:
+dir:
+	mkdir -p obj obj/parser_map
+
+obj/%.o:	src/%.c Makefile 
 	@echo "\033[1mCompiling $<...\033[0m"
-	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Remove object files
 clean:
 	@echo "\033[1;31m\033[1mDeleting every object file\033[0m"
 	@echo "\033[1mCleaning the object src files\033[0m"
-	@$(RM) $(OBJS)
+	@$(RM) obj/
 	@echo "\033[1mCleaning the libft object files\033[0m"
 	@$(MAKE) clean -s -C $(LIBFT)
 	@echo "\033[1mCleaning the mlx object files\033[0m"
@@ -84,5 +91,7 @@ fclean:     clean
 
 # Rebuild the project from scratch
 re:         fclean all
+
+-include $(DEPS)
 
 .PHONY:     all clean fclean re
