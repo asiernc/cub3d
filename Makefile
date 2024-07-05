@@ -6,7 +6,7 @@
 #    By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/03 20:31:11 by anovio-c          #+#    #+#              #
-#    Updated: 2024/07/04 13:37:44 by anovio-c         ###   ########.fr        #
+#    Updated: 2024/07/05 10:57:19 by anovio-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,12 +34,13 @@ endif
 # Commands and flags
 CC          = gcc
 INCLUDE     = includes/cub3d.h libs/libft/libft.h libs/mlx_linux/mlx.h
-CFLAGS      = -Wall -Wextra -Werror
+CFLAGS      = -Wall -Wextra -Werror -g -fsanitize=leak
 RM          = rm -rf
 
 # Cub3d files
 SRCS        =	main.c \
 				parser_map/check_map.c \
+				parser_map/utils_parser.c 	\
 				handle_errors.c
 
 OBJS        = $(addprefix obj/, $(SRCS:%.c=%.o))
@@ -49,7 +50,7 @@ DEPS        = $(addprefix obj/, $(SRCS:%.c=%.d))
 all:       dir $(NAME)
 
 # Link the main executable
-$(NAME):    $(OBJS) $(LIBFT_A) $(MLX_A)
+$(NAME):    $(OBJS) $(LIBFT_A) $(MLX_A) Makefile
 	@$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT) -lft $(MXFLAGS) -o $(NAME)
 	@echo "\033[1;32m\033[1mSuccessfully built $(NAME).\033[0m"
 

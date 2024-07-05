@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/04 16:06:20 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/05 12:33:47 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,10 @@ typedef struct s_cub3d
 // Parser map
 
 void	ft_check_map(t_cub3d *cub3d, char *file_path);
+
+// Utils parser
+
+char	*clear_input_line(char *str);
 
 
 // Handle errors
