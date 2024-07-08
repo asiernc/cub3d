@@ -43,7 +43,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		ft_put_error("Wrong arguments", true);
 	init_data_struct(&cub3d.data);
-	read_map(&cub3d, argv[1]);
+	read_file(&cub3d, argv[1]);
 	//ft_init_window(&cub3d);
 	//mlx_loop(cub3d.mlx);
 	return (0);

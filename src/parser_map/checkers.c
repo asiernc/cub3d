@@ -35,8 +35,7 @@ int	check_map_line(char *line)
 		return (0);
 	if (!ft_strncmp(line + i, "NO", 2) || !ft_strncmp(line + i, "SO", 2)
 		|| !ft_strncmp(line + i, "WE", 2) || !ft_strncmp(line + i, "EA", 2)
-		|| !ft_strncmp(line + i, "NO", 2) || !ft_strncmp(line + i, "F", 1)
-		|| !ft_strncmp(line + i, "C", 1))
+		|| !ft_strncmp(line + i, "F", 1) || !ft_strncmp(line + i, "C", 1))
 		return (0);
 	while (line[i])
 	{
@@ -97,7 +96,7 @@ void	check_player(t_cub3d *cub3d)
 		i++;
 	}
 	if (counter != 1)
-		ft_put_error("Player error", true);
+		ft_put_error("Error Only one player", true);
 }
 
 int	check_all_data(t_cub3d *cub3d)

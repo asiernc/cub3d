@@ -33,7 +33,7 @@ endif
 # Commands and flags
 CC          = gcc
 INCLUDE     = includes/cub3d.h libs/libft/libft.h libs/mlx_linux/mlx.h
-CFLAGS      = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS      = -Wall -Wextra -Werror -g #-fsanitize=address
 RM          = rm -rf
 
 # Cub3d files

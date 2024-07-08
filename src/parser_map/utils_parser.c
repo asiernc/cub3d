@@ -55,18 +55,16 @@ static int	ft_count_word(char *str)
 	return (count);
 }
 
-static char	*clean_spaces_str(char *str)
+char	*clean_spaces_str(char *str)
 {
 	char	*res;
 	int		i;
 	int		j;
 	int		flag;
 
-	i = ft_count_word(str);
-	res = malloc(i + 1);
+	res = ft_calloc(ft_count_word(str), sizeof(char));
 	if (!res)
 		return (NULL);
-	res[i] = '\0';
 	i = 0;
 	j = 0;
 	while (str[i])
@@ -87,23 +85,6 @@ static char	*clean_spaces_str(char *str)
 		i++;
 	}
 	return (res);
-}
-
-char	*clear_input_line(char *str, int flag)
-{
-	char	*trimmed;
-	char	*clean;
-
-	trimmed = NULL;
-	clean = NULL;
-	if (flag == 0)
-	{
-		trimmed = ft_strtrim(str, " ");
-		clean = clean_spaces_str(trimmed);
-		free(trimmed);
-		return (clean);
-	}
-	return (NULL);
 }
 
 void	test_print(t_data *data)

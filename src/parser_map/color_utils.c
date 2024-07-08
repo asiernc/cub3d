@@ -47,12 +47,12 @@ static void	check_values_rgb(char **line)
 	{
 		num = ft_atoi(line[i]);
 		if (num < 0 || num > 255)
-			ft_put_error("Color out of RGB range", true);
+			ft_put_error("Error. Color out of RGB range", true);
 		counter++;
 		i++;
 	}
 	if (counter != 3)
-		ft_put_error("Missing RGB color", true);
+		ft_put_error("Error. Missing RGB color", true);
 }
 
 unsigned int	rgb_to_int(int red, int green, int blue)
@@ -74,7 +74,7 @@ unsigned int	read_colors(char **line)
 	unsigned int	return_color;
 
 	if (check_more_letters(line) == true)
-		ft_put_error("Too more letters in color numbers", true);
+		ft_put_error("Error. Too more letters in color numbers", true);
 	check_values_rgb(line);
 	i = 0;
 	j = -1;
@@ -82,7 +82,7 @@ unsigned int	read_colors(char **line)
 	{
 		return_color = ft_atoi_base(line[i], "0123456789");
 		if (return_color < 0 || return_color > 255)
-			ft_put_error("Incorrect rgb range number", true);
+			ft_put_error("Error. Incorrect RGB range number", true);
 		color[++j] = return_color;
 
 	}

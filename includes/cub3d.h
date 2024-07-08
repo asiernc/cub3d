@@ -61,7 +61,6 @@ typedef struct s_image
 	int		endian;
 }	t_image;
 
-
 typedef struct s_cub3d
 {
 	void	*mlx;
@@ -75,28 +74,28 @@ typedef struct s_cub3d
 
 // Parser map
 
-void			read_map(t_cub3d *cub3d, char *file_path);
+void			read_file(t_cub3d *cub3d, char *file_path);
+void			get_height_width(t_cub3d *cub3d, char *file_path);
+int				fill_data(t_cub3d *cub3d, char *line);
+void			fill_textures(t_cub3d *cub3d, char **line);
+void			fill_colors(t_cub3d *cub3d, char **line);
+void			fill_map(t_cub3d *cub3d, char *line);
 
 // Utils parser
 
-char			*clear_input_line(char *str, int flag);
-void			get_height_width(t_cub3d *cub3d, char *file_path);
-void			fill_textures(t_cub3d *cub3d, char **line);
-int         	fill_data(t_cub3d *cub3d, char *line);
-void			fill_colors(t_cub3d *cub3d, char **line);
+void			remove_newline(char *line);
+char			*clean_spaces_str(char *str);
+int				check_map_line(char *line);
 int				check_required_data_for_map(t_cub3d *cub3d);
-int             check_all_data(t_cub3d *cub3d);
-void        	check_wall_map(t_cub3d *cub3d);
-void	        check_player(t_cub3d *cub3d);
-int 			check_map_line(char *line);
-void            fill_map(t_cub3d *cub3d, char *line);
+void			check_wall_map(t_cub3d *cub3d);
+void			check_player(t_cub3d *cub3d);
+int				check_all_data(t_cub3d *cub3d);
 void			test_print(t_data *data);
-void	        remove_newline(char *line);
 
 // Color utils
 
-unsigned int	rgb_to_int(int red, int green, int blue);
 unsigned int	read_colors(char **line);
+unsigned int	rgb_to_int(int red, int green, int blue);
 
 // Handle errors
 void			ft_put_error(const char *err_msg, bool flag);

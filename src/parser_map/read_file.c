@@ -13,7 +13,7 @@
 #include "../../includes/cub3d.h"
 #include "../../libs/libft/libft.h"
 
-static bool	check_open_file(t_cub3d *cub3d, char *file_path)
+static void	check_open_file(t_cub3d *cub3d, char *file_path)
 {
 	if (!ft_strnstr_end(file_path, ".cub"))
 		ft_put_error("Map file type is not .cub", true);
@@ -22,17 +22,13 @@ static bool	check_open_file(t_cub3d *cub3d, char *file_path)
 	cub3d->data.fd = open(file_path, O_RDONLY, 0644);
 	if (cub3d->data.fd < 0)
 		ft_put_error("Open map file error", false);
-	return (true);
 }
 
-void	read_map(t_cub3d *cub3d, char *file_path)
+void	read_file(t_cub3d *cub3d, char *file_path)
 {
 	char	*line;
-	char	*clean_line;
 
-	if (!check_open_file(cub3d, file_path))
-		ft_put_error("file error", true);
-	printf("WITDH %d, HEIGHT %d\n", cub3d->data.width, cub3d->data.height);
+	check_open_file(cub3d, file_path);
 	while (1)
 	{
 		line = get_next_line(cub3d->data.fd);
@@ -41,19 +37,14 @@ void	read_map(t_cub3d *cub3d, char *file_path)
 		if (line[0] != '\n')
 		{
 			remove_newline(line);
-			if (check_map_line(line) == 0)
-				clean_line = clear_input_line(line, 0);
-			if (check_map_line(line) == 0 && fill_data(cub3d, clean_line))
-			{
-				free(clean_line);
-				ft_put_error("Fill error", true);
-			}
-			else if (check_map_line(line) == 1)
+			if (!check_map_line(line))
+				fill_data(cub3d, line);
+			else if (check_map_line(line))
 				fill_map(cub3d, line);
 		}
 		free(line);
 	}
 	close(cub3d->data.fd);
 	check_all_data(cub3d);
-	//test_print(&cub3d->data);
+	test_print(&cub3d->data);
 }

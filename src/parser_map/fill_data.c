@@ -13,12 +13,28 @@
 #include "../../includes/cub3d.h"
 #include "../../libs/libft/libft.h"
 
+static char	*prepare_line(char *str)
+{
+	char	*trimmed;
+	char	*clean;
+
+	trimmed = NULL;
+	clean = NULL;
+	trimmed = ft_strtrim(str, " ");
+	clean = clean_spaces_str(trimmed);
+	if (trimmed)
+		free(trimmed);
+	return (clean);
+}
+
 int	fill_data(t_cub3d *cub3d, char *line)
 {
+	char	*clean_line;
 	char	**split_line;
 	int		i;
 
-	split_line = ft_split(line, ' ');
+	clean_line = prepare_line(line);
+	split_line = ft_split(clean_line, ' ');
 	if (!split_line)
 		ft_put_error("Malloc error", true);
 	fill_textures(cub3d, split_line);
@@ -27,6 +43,7 @@ int	fill_data(t_cub3d *cub3d, char *line)
 	while (split_line[++i])
 		free(split_line[i]);
 	free(split_line);
+	free(clean_line);
 	return (0);
 }
 
@@ -35,12 +52,12 @@ static void	check_fill_textures(char **key, char *value)
 	int	fd;
 
 	if (*key)
-		ft_put_error("Duplicate same orientation", true);
+		ft_put_error("Error. Duplicate same orientation.", true);
 	if (!ft_strnstr_end(value, ".xpm"))
-		ft_put_error("Texture file type is not .cub", true);
+		ft_put_error("Error. Texture file type is not .cub.", true);
 	fd = open(value, O_RDONLY, 0644);
 	if (fd < 0)
-		ft_put_error("Open texture file error", false);
+		ft_put_error("Error. Open texture file error.", false);
 	close(fd);
 	*key = ft_strdup(value);
 }
@@ -58,21 +75,6 @@ void	fill_textures(t_cub3d *cub3d, char **line)
 	else if (!ft_strncmp(line[0], "EA", 3))
 		check_fill_textures(&cub3d->data.ea_path, line[1]);
 }
-
-/*static void	check_fill_color(char **key, char *value)
-{
-	int	fd;
-
-	if (*key)
-		ft_put_error("Duplicate same orientation", true);
-	if (!ft_strnstr_end(value, ".xpm"))
-		ft_put_error("Texture file type is not .cub", true);
-	fd = open(value, O_RDONLY, 0644);
-	if (fd < 0)
-		ft_put_error("Open texture file error", false);
-	close(fd);
-	*key = ft_strdup(value);
-}*/
 
 void	fill_colors(t_cub3d *cub3d, char **line)
 {
