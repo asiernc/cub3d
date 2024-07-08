@@ -15,12 +15,14 @@
 static void	init_data_struct(t_data *data)
 {
 	data->map = NULL;
+	data->height = 0;
+	data->width = 0;
 	data->no_path = NULL;
 	data->ea_path = NULL;
 	data->so_path = NULL;
 	data->we_path = NULL;
-	data->ceil = -1;
-	data->floor = -1;
+	data->ceil = 4294967295;
+	data->floor = 4294967295;
 }
 
 // static void	ft_init_window(t_cub3d *cub3d)
@@ -41,7 +43,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		ft_put_error("Wrong arguments", true);
 	init_data_struct(&cub3d.data);
-	ft_check_map(&cub3d, argv[1]);
+	read_map(&cub3d, argv[1]);
 	//ft_init_window(&cub3d);
 	//mlx_loop(cub3d.mlx);
 	return (0);

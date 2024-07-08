@@ -13,22 +13,18 @@
 #include "../../includes/cub3d.h"
 #include "../../libs/libft/libft.h"
 
-/*void	clear_line(char *s)
+void	remove_newline(char *line)
 {
-	int len;
-	
-	len = ft_strlen(s);
-	while (len && ft_isspace(s[len - 1]))
-		--len;
-	while (len && ft_isspace(*s) && *s++)
-		--len;
-	while (len--)
+	int	len;
+
+	len = (int)ft_strlen(line);
+	while (len > 0 && (line[len - 1] == '\n' || line[len - 1] == ' '
+			|| line[len - 1] == '\t'))
 	{
-		if (!ft_isspace(*s) || (*(s + 1) && !ft_isspace(*(s + 1))))
-			write(1, s, 1);
-		s++;
+		line[len - 1] = '\0';
+		len--;
 	}
-}*/
+}
 
 static int	ft_count_word(char *str)
 {
@@ -93,15 +89,42 @@ static char	*clean_spaces_str(char *str)
 	return (res);
 }
 
-char	*clear_input_line(char *str)
+char	*clear_input_line(char *str, int flag)
 {
 	char	*trimmed;
 	char	*clean;
-	//int		i;
 
-	trimmed = ft_strtrim(str, " \n");
-	clean = clean_spaces_str(trimmed);
-	free(trimmed);
-	return (clean);
+	trimmed = NULL;
+	clean = NULL;
+	if (flag == 0)
+	{
+		trimmed = ft_strtrim(str, " ");
+		clean = clean_spaces_str(trimmed);
+		free(trimmed);
+		return (clean);
+	}
+	return (NULL);
 }
+
+void	test_print(t_data *data)
+{
+	int	i;
+
+	printf("NO PATH => %s\n", data->no_path);
+	printf("EA PATH => %s\n", data->ea_path);
+	printf("SO PATH => %s\n", data->so_path);
+	printf("WE PATH => %s\n", data->we_path);
+	printf("FLOOR COLOR => %u\n", data->floor);
+	printf("CEIL COLOR => %u\n", data->ceil);
+	i = 0;
+	if (data->map && data->map[0])
+	{
+		while (data->map[i])
+		{
+			printf("%s\n", data->map[i]);
+			i++;
+		}
+	}
+}
+
 

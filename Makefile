@@ -30,17 +30,20 @@ else
     $(error Unsupported OS: $(UNAME_S))
 endif
 
-
 # Commands and flags
 CC          = gcc
 INCLUDE     = includes/cub3d.h libs/libft/libft.h libs/mlx_linux/mlx.h
-CFLAGS      = -Wall -Wextra -Werror -g -fsanitize=leak
+CFLAGS      = -Wall -Wextra -Werror -g -fsanitize=address
 RM          = rm -rf
 
 # Cub3d files
 SRCS        =	main.c \
-				parser_map/check_map.c \
+				parser_map/read_file.c 		\
+				parser_map/checkers.c 		\
 				parser_map/utils_parser.c 	\
+				parser_map/color_utils.c 	\
+				parser_map/fill_data.c 		\
+				parser_map/map_utils.c 		\
 				handle_errors.c
 
 OBJS        = $(addprefix obj/, $(SRCS:%.c=%.o))

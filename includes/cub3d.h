@@ -38,17 +38,18 @@ typedef struct s_player
 
 typedef struct s_data
 {
-	int			fd;
-	int			height;
-	int			witdh;
-	char		**map;
-	t_player	player;
-	char		*no_path;
-	char		*ea_path;
-	char		*so_path;
-	char		*we_path;
-	int			ceil;
-	int			floor;
+	int						fd;
+	char					*map_file_path;
+	int						height;
+	int						width;
+	char					**map;
+	t_player				player;
+	char					*no_path;
+	char					*ea_path;
+	char					*so_path;
+	char					*we_path;
+	unsigned int			ceil;
+	unsigned int			floor;
 }	t_data;
 
 typedef struct s_image
@@ -74,14 +75,30 @@ typedef struct s_cub3d
 
 // Parser map
 
-void	ft_check_map(t_cub3d *cub3d, char *file_path);
+void			read_map(t_cub3d *cub3d, char *file_path);
 
 // Utils parser
 
-char	*clear_input_line(char *str);
+char			*clear_input_line(char *str, int flag);
+void			get_height_width(t_cub3d *cub3d, char *file_path);
+void			fill_textures(t_cub3d *cub3d, char **line);
+int         	fill_data(t_cub3d *cub3d, char *line);
+void			fill_colors(t_cub3d *cub3d, char **line);
+int				check_required_data_for_map(t_cub3d *cub3d);
+int             check_all_data(t_cub3d *cub3d);
+void        	check_wall_map(t_cub3d *cub3d);
+void	        check_player(t_cub3d *cub3d);
+int 			check_map_line(char *line);
+void            fill_map(t_cub3d *cub3d, char *line);
+void			test_print(t_data *data);
+void	        remove_newline(char *line);
 
+// Color utils
+
+unsigned int	rgb_to_int(int red, int green, int blue);
+unsigned int	read_colors(char **line);
 
 // Handle errors
-void	ft_put_error(const char *err_msg, bool flag);
+void			ft_put_error(const char *err_msg, bool flag);
 
 #endif
