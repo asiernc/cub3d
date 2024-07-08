@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/08 21:32:14 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/08 21:52:25 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@
 
 # define KEY_CAM_LEFT 65361
 # define KEY_CAM_RIGHT 65363
+
+# define KEY_ACTION 32
 
 typedef struct s_player
 {
@@ -113,6 +115,7 @@ void			move_front(t_cub3d *cub3d);
 void			move_right(t_cub3d *cub3d);
 void			move_back(t_cub3d *cub3d);
 void			move_left(t_cub3d *cub3d);
+void			move_action(t_cub3d *cub3d);
 
 void			cam_left(t_cub3d *cub3d);
 void			cam_right(t_cub3d *cub3d);

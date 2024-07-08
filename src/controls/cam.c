@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 21:32:42 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/08 21:35:40 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/08 21:48:57 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,3 @@ void	cam_right(t_cub3d *cub3d)
 	(void) cub3d;
 	printf("CAM RIGHT\n");
 }
-

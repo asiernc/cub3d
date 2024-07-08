@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 20:59:20 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/08 21:31:56 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/08 21:47:15 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	on_key(int n, t_cub3d *cub3d)
 		cam_left(cub3d);
 	else if (n == KEY_CAM_RIGHT)
 		cam_right(cub3d);
+	else if (n == KEY_ACTION)
+		move_action(cub3d);
 	return (0);
 }
 

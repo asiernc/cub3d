@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:02:56 by asiercara         #+#    #+#             */
-/*   Updated: 2024/07/08 21:17:28 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/08 21:58:16 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ static void	init_data_struct(t_data *data)
 	data->floor = 4294967295;
 }
 
- static void	ft_init_window(t_cub3d *cub3d)
- {
- 	cub3d->mlx = mlx_init();
+static void	ft_init_window(t_cub3d *cub3d)
+{
+	cub3d->mlx = mlx_init();
 	if (!cub3d->mlx)
- 		ft_put_error("Error establishing a connection to the graphics system.",
- 			true);
- 	cub3d->win = mlx_new_window(cub3d->mlx, WIDTH, HEIGHT, "cub3d");
- 	if (!cub3d->win)
- 		ft_put_error("Error initializing window.", true);
+		ft_put_error("Error establishing a connection to the graphics system.",
+			true);
+	cub3d->win = mlx_new_window(cub3d->mlx, WIDTH, HEIGHT, "cub3d");
+	if (!cub3d->win)
+		ft_put_error("Error initializing window.", true);
 }
 
 static void	ft_init_events(t_cub3d *cub3d)
