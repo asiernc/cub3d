@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/05 12:33:47 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/08 21:32:14 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,25 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <math.h>
+# include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
 # include <stdbool.h>
 
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 720
+# define HEIGHT 480
 
-# define ARROW_LEFT 123
-# define ARROW_RIGHT 124
-# define ARROW_DOWN 125
-# define ARROW_UP 126
-# define ESCAPE 53
+# define ON_KEYDOWN 2
+# define ON_DESTROY 17
+
+# define KEY_ESC 65307
+# define KEY_LEFT 97
+# define KEY_RIGHT 100
+# define KEY_DOWN 115
+# define KEY_UP 119
+
+# define KEY_CAM_LEFT 65361
+# define KEY_CAM_RIGHT 65363
 
 typedef struct s_player
 {
@@ -97,7 +104,24 @@ void			test_print(t_data *data);
 unsigned int	read_colors(char **line);
 unsigned int	rgb_to_int(int red, int green, int blue);
 
+// Controls
+
+int				on_key(int n, t_cub3d *cub3d);
+int				on_close(t_cub3d *cub3d);
+
+void			move_front(t_cub3d *cub3d);
+void			move_right(t_cub3d *cub3d);
+void			move_back(t_cub3d *cub3d);
+void			move_left(t_cub3d *cub3d);
+
+void			cam_left(t_cub3d *cub3d);
+void			cam_right(t_cub3d *cub3d);
+
+
 // Handle errors
 void			ft_put_error(const char *err_msg, bool flag);
+
+// Free
+void			ft_free_all(t_cub3d *cub3d);
 
 #endif

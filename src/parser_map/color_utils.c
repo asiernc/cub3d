@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   color_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:33:46 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/05 12:36:35 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/08 20:39:36 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ unsigned int	read_colors(char **line)
 	while (line[++i] && j < 3)
 	{
 		return_color = ft_atoi_base(line[i], "0123456789");
-		if (return_color < 0 || return_color > 255)
+		if (return_color > 255)
 			ft_put_error("Error. Incorrect RGB range number", true);
 		color[++j] = return_color;
 
