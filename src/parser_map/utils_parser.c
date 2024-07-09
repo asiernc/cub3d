@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/05 12:00:32 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/09 17:27:32 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	ft_count_word(char *str)
 		}
 		i++;
 	}
-	return (count);
+	return (count + 1);
 }
 
 char	*clean_spaces_str(char *str)

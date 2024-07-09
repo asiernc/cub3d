@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:15:22 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/04 15:12:16 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/09 10:16:10 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void			ft_putstr_fd(const char *s, int fd);
 void			ft_putendl_fd(const char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 char			*ft_strnstr_end(const char *str, const char *to_find);
+char			*ft_strnstr_end2(char *str, char *to_find);
 t_list			*ft_lstnew(void *content);
 void			ft_lstadd_front(t_list **lst, t_list *new);
 int				ft_lstsize(t_list *lst);

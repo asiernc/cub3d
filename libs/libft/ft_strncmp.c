@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anovio-c <anovio-c@student.42barcel>       +#+  +:+       +#+        */
+/*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:53:12 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/01/15 13:21:50 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/09 09:58:53 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	i = 0;
 	if (n == 0)
 		return (0);
-    if (!s1 || !s2)
-        return (0);
 	while (s1[i] != '\0' && s1[i] == s2[i] && i < n - 1)
 		i++;
 	if (s1[i] == s2[i])
@@ -28,24 +26,4 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	else
 		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
-/*
-#include <stdio.h>
 
-int	main(void)
-{
-	const char *s1 = "Hello, World!";
-	const char *s2 = "Hello, Universe!";
-	size_t	n = 7;
-
-	int result = ft_strncmp(s1, s2, n);
-
-	printf("Comparison result: %d\n", result);
-
-	if (result < 0)
-		printf("'%s' is less than '%s'\n", s1, s2);
-	else if (result > 0)
-		printf("'%s' is greather than '%s'\n", s1, s2);
-	else
-		printf("'%s' is equal to '%s'\n", s1, s2);
-	return (0);
-}*/

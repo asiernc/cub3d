@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_parser.c                                     :+:      :+:    :+:   */
+/*   fill_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/05 12:00:32 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/09 17:25:59 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ static char	*prepare_line(char *str)
 	trimmed = NULL;
 	clean = NULL;
 	trimmed = ft_strtrim(str, " ");
+	if (!trimmed)
+		ft_put_error("Malloc error on trim", false);
 	clean = clean_spaces_str(trimmed);
-	if (trimmed)
-		free(trimmed);
+	free(trimmed);
 	return (clean);
 }
 
@@ -36,7 +37,7 @@ int	fill_data(t_cub3d *cub3d, char *line)
 	clean_line = prepare_line(line);
 	split_line = ft_split(clean_line, ' ');
 	if (!split_line)
-		ft_put_error("Malloc error", true);
+		ft_put_error("Malloc error on split", false);
 	fill_textures(cub3d, split_line);
 	fill_colors(cub3d, split_line);
 	i = -1;
@@ -54,7 +55,7 @@ static void	check_fill_textures(char **key, char *value)
 	if (*key)
 		ft_put_error("Error. Duplicate same orientation.", true);
 	if (!ft_strnstr_end(value, ".xpm"))
-		ft_put_error("Error. Texture file type is not .cub.", true);
+		ft_put_error("Error. Texture file type is not .xpm", true);
 	fd = open(value, O_RDONLY, 0644);
 	if (fd < 0)
 		ft_put_error("Error. Open texture file error.", false);

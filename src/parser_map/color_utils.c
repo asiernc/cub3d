@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   color_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:33:46 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/05 12:36:35 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/09 10:43:15 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 #include "../../libs/libft/libft.h"
 
+
+// checkear caracteres no alfa
 static bool	check_more_letters(char **line)
 {
 	int	i;
@@ -25,7 +27,7 @@ static bool	check_more_letters(char **line)
 	{
 		j = -1;
 		while (line[i][++j])
-			if (ft_isalpha(line[i][j]))
+			if (ft_isalpha(line[i][j]) || line[i][j] == '-')
 				flag++;
 	}
 	if (flag > 1)
@@ -81,8 +83,6 @@ unsigned int	read_colors(char **line)
 	while (line[++i] && j < 3)
 	{
 		return_color = ft_atoi_base(line[i], "0123456789");
-		if (return_color < 0 || return_color > 255)
-			ft_put_error("Error. Incorrect RGB range number", true);
 		color[++j] = return_color;
 
 	}

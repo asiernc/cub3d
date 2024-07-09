@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:02:56 by asiercara         #+#    #+#             */
-/*   Updated: 2024/07/05 12:29:15 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/09 17:04:14 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,3 +48,5 @@ int	main(int argc, char **argv)
 	//mlx_loop(cub3d.mlx);
 	return (0);
 }
+
+

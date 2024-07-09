@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   checkers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:33:46 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/05 12:36:35 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/09 11:32:13 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,10 @@ void	check_player(t_cub3d *cub3d)
 		while (map[i][j])
 		{
 			if (ft_isalpha(map[i][j]))
+			{
 				counter++;
+				// substituir letra por 0 y setear info del jugador
+			}
 			j++;
 		}
 		i++;
