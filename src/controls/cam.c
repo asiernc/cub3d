@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_errors.c                                    :+:      :+:    :+:   */
+/*   cam.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/04 12:18:21 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/08 21:12:23 by molasz-a         ###   ########.fr       */
+/*   Created: 2024/07/08 21:32:42 by molasz-a          #+#    #+#             */
+/*   Updated: 2024/07/08 21:48:57 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
-#include "../libs/libft/libft.h"
+#include "../../includes/cub3d.h"
 
-void	ft_put_error(const char *err_msg, bool flag)
-{
-	if (flag)
-		ft_putendl_fd(err_msg, STDERR_FILENO);
-	else
-		perror(err_msg);
-	exit(1);
-}
-
-void	ft_free_all(t_cub3d *cub3d)
+void	cam_left(t_cub3d *cub3d)
 {
 	(void) cub3d;
-	exit(0);
+	printf("CAM LEFT\n");
+}
+
+void	cam_right(t_cub3d *cub3d)
+{
+	(void) cub3d;
+	printf("CAM RIGHT\n");
 }

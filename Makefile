@@ -6,7 +6,7 @@
 #    By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/03 20:31:11 by anovio-c          #+#    #+#              #
-#    Updated: 2024/07/09 11:20:26 by anovio-c         ###   ########.fr        #
+#    Updated: 2024/07/09 17:31:19 by anovio-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,9 @@ SRCS        =	main.c \
 				parser_map/color_utils.c 	\
 				parser_map/fill_data.c 		\
 				parser_map/map_utils.c 		\
+				controls/controls.c			\
+				controls/move.c				\
+				controls/cam.c				\
 				handle_errors.c
 
 OBJS        = $(addprefix obj/, $(SRCS:%.c=%.o))
@@ -68,7 +71,7 @@ $(MLX_A):
 	@echo "\033[1;32m\033[1mCompiled $(MLX_A).\033[0m"
 
 dir:
-	mkdir -p obj obj/parser_map
+	mkdir -p obj obj/parser_map obj/controls
 
 obj/%.o:	src/%.c Makefile 
 	@echo "\033[1mCompiling $<...\033[0m"

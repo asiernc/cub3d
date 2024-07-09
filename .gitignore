@@ -1,5 +1,6 @@
+cub3d
 .DS_Store
 *.o
 *.d
 *.a
-cub3d
+.vscode/

@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:33:46 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/09 10:43:15 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/09 17:32:38 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,6 @@ unsigned int	read_colors(char **line)
 	i = 0;
 	j = -1;
 	while (line[++i] && j < 3)
-	{
-		return_color = ft_atoi_base(line[i], "0123456789");
-		color[++j] = return_color;
-
-	}
+		color[++j] = ft_atoi_base(line[i], "0123456789");
 	return (rgb_to_int(color[0], color[1], color[2]));
 }
