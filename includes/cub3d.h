@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/09 17:31:25 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/10 10:51:12 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ char			*clean_spaces_str(char *str);
 int				check_map_line(char *line);
 int				check_required_data_for_map(t_cub3d *cub3d);
 void			check_wall_map(t_cub3d *cub3d);
+void			check_inside_map(t_cub3d *cub3d);
 void			check_player(t_cub3d *cub3d);
 int				check_all_data(t_cub3d *cub3d);
 void			test_print(t_data *data);
