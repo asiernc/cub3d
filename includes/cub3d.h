@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/10 12:55:02 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/10 13:16:16 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,18 @@ typedef struct s_data
 	unsigned int			floor;
 }	t_data;
 
-typedef struct s_image
+typedef struct s_mlx
 {
-	void	*img;
-	char	*addr;
-	int		bpp;
-	int		line_length;
-	int		endian;
-}	t_image;
+	mlx_image_t	no_img;
+	mlx_image_t	ea_img;
+	mlx_image_t	so_img;
+	mlx_image_t	we_img;
+}	t_mlx;
 
 typedef struct s_cub3d
 {
-	void	*mlx;
+	void	*win;
+	t_mlx	mlx;
 	t_data	data;
 
 }	t_cub3d;

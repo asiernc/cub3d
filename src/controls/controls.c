@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 20:59:20 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/10 12:09:17 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/10 13:21:59 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	on_key(mlx_key_data_t e, void *cub3d)
 
 int	on_close(t_cub3d *cub3d)
 {
-	mlx_close_window(cub3d->mlx);
+	mlx_close_window(cub3d->win);
 	ft_free_all(cub3d);
 	return (0);
 }
