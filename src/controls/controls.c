@@ -6,37 +6,37 @@
 /*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 20:59:20 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/08 21:47:15 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/10 12:09:17 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-#include "../../libs/mlx_linux/mlx.h"
 
-int	on_key(int n, t_cub3d *cub3d)
+void	on_key(mlx_key_data_t e, void *cub3d)
 {
-	if (n == KEY_ESC)
+	if (!e.action)
+		return ;
+	else if (e.key == MLX_KEY_ESCAPE)
 		on_close(cub3d);
-	else if (n == KEY_UP)
+	else if (e.key == MLX_KEY_W)
 		move_front(cub3d);
-	else if (n == KEY_RIGHT)
+	else if (e.key == MLX_KEY_D)
 		move_right(cub3d);
-	else if (n == KEY_DOWN)
+	else if (e.key == MLX_KEY_S)
 		move_back(cub3d);
-	else if (n == KEY_LEFT)
+	else if (e.key == MLX_KEY_A)
 		move_left(cub3d);
-	else if (n == KEY_CAM_LEFT)
+	else if (e.key == MLX_KEY_LEFT)
 		cam_left(cub3d);
-	else if (n == KEY_CAM_RIGHT)
+	else if (e.key == MLX_KEY_RIGHT)
 		cam_right(cub3d);
-	else if (n == KEY_ACTION)
+	else if (e.key == MLX_KEY_SPACE)
 		move_action(cub3d);
-	return (0);
 }
 
 int	on_close(t_cub3d *cub3d)
 {
-	mlx_destroy_window(cub3d->mlx, cub3d->win);
+	mlx_close_window(cub3d->mlx);
 	ft_free_all(cub3d);
 	return (0);
 }

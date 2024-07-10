@@ -4,3 +4,4 @@ cub3d
 *.d
 *.a
 .vscode/
+build/

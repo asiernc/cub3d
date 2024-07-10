@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:33:46 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/09 17:32:38 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/10 10:29:28 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ unsigned int	read_colors(char **line)
 	int				color[3];
 	int				i;
 	int				j;
-	unsigned int	return_color;
 
 	if (check_more_letters(line) == true)
 		ft_put_error("Error. Too more letters in color numbers", true);

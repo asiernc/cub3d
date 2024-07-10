@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/09 17:31:25 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/10 11:20:18 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include "../libs/MLX42/include/MLX42/MLX42.h"
 
 # define WIDTH 720
 # define HEIGHT 480
@@ -108,7 +109,7 @@ unsigned int	rgb_to_int(int red, int green, int blue);
 
 // Controls
 
-int				on_key(int n, t_cub3d *cub3d);
+void			on_key(mlx_key_data_t data, void *cub3d);
 int				on_close(t_cub3d *cub3d);
 
 void			move_front(t_cub3d *cub3d);
