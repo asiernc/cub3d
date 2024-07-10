@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/10 12:21:44 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/10 12:55:02 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,6 @@
 
 # define WIDTH 720
 # define HEIGHT 480
-
-# define ON_KEYDOWN 2
-# define ON_DESTROY 17
-
-# define KEY_ESC 65307
-# define KEY_LEFT 97
-# define KEY_RIGHT 100
-# define KEY_DOWN 115
-# define KEY_UP 119
-
-# define KEY_CAM_LEFT 65361
-# define KEY_CAM_RIGHT 65363
-
-# define KEY_ACTION 32
 
 typedef struct s_player
 {
@@ -74,7 +60,6 @@ typedef struct s_image
 typedef struct s_cub3d
 {
 	void	*mlx;
-	void	*win;
 	t_data	data;
 
 }	t_cub3d;
