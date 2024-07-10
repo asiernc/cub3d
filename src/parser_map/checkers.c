@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:33:46 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/09 11:32:13 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/10 12:16:16 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,32 @@ int	check_map_line(char *line)
 	return (1);
 }
 
+void	check_inside_map(t_cub3d *cub3d)
+{
+	char	**map;
+	int		i;
+	int		j;
+
+	map = cub3d->data.map;
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == '0')
+				if (map[i + 1][j] == ' ' || map[i - 1][j] == ' '
+					|| map[i][j + 1] == ' ' || map[i][j - 1] == ' ')
+				{
+					fprintf(stderr, "In {%d, %d} the '0' has not been correctly closed.\n", j, i);
+					ft_put_error("Map error.", true);
+				}
+			j++;
+		}
+		i++;
+	}
+}
+
 void	check_wall_map(t_cub3d *cub3d)
 {
 	char	**map;
@@ -74,33 +100,47 @@ void	check_wall_map(t_cub3d *cub3d)
 	}
 }
 
+void	replace_player(t_cub3d *cub3d, char **map, int i[3], char player_view)
+{
+	if (i[2] == 1)
+	{
+		cub3d->data.player.x = i[1];
+		cub3d->data.player.y = i[0];
+		cub3d->data.player.view = player_view;
+		map[i[0]][i[1]] = '0';
+	}
+	else
+		return ;
+}
+
+ // i[0] == i; i[1] == j; i[2] == counter;
+
 void	check_player(t_cub3d *cub3d)
 {
-	int		i;
-	int		j;
-	int		counter;
 	char	**map;
+	int		i[3];
 
 	map = cub3d->data.map;
-	i = 0;
-	counter = 0;
-	while (map[i])
+	i[0] = 0;
+	i[2] = 0;
+	while (map[i[0]])
 	{
-		j = 0;
-		while (map[i][j])
+		i[1] = 0;
+		while (map[i[0]][i[1]])
 		{
-			if (ft_isalpha(map[i][j]))
+			if (ft_isalpha(map[i[0]][i[1]]))
 			{
-				counter++;
-				// substituir letra por 0 y setear info del jugador
+				i[2]++;
+				replace_player(cub3d, map, i, map[i[0]][i[1]]);
 			}
-			j++;
+			i[1]++;
 		}
-		i++;
+		i[0]++;
 	}
-	if (counter != 1)
+	if (i[2] != 1)
 		ft_put_error("Error Only one player", true);
 }
+
 
 int	check_all_data(t_cub3d *cub3d)
 {
@@ -119,5 +159,6 @@ int	check_all_data(t_cub3d *cub3d)
 		ft_put_error("Map error", true);
 	check_wall_map(cub3d);
 	check_player(cub3d);
+	check_inside_map(cub3d);
 	return (EXIT_SUCCESS);
 }

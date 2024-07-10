@@ -6,15 +6,13 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:33:46 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/10 10:29:28 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/10 12:22:24 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 #include "../../libs/libft/libft.h"
 
-
-// checkear caracteres no alfa
 static bool	check_more_letters(char **line)
 {
 	int	i;
@@ -27,8 +25,12 @@ static bool	check_more_letters(char **line)
 	{
 		j = -1;
 		while (line[i][++j])
-			if (ft_isalpha(line[i][j]) || line[i][j] == '-')
+		{
+			if (ft_isalpha(line[i][j]))
 				flag++;
+			if (!ft_isalnum(line[i][j]))
+				flag++;
+		}
 	}
 	if (flag > 1)
 		return (true);
@@ -62,9 +64,9 @@ unsigned int	rgb_to_int(int red, int green, int blue)
 	unsigned int		color;
 
 	color = 0;
-	color |= (unsigned int)(blue * 255);
-	color |= (unsigned int)(green * 255) << 8;
-	color |= (unsigned int)(red * 255) << 16;
+	color |= blue;
+	color |= green << 8;
+	color |= red << 16;
 	return (color);
 }
 
@@ -75,11 +77,15 @@ unsigned int	read_colors(char **line)
 	int				j;
 
 	if (check_more_letters(line) == true)
-		ft_put_error("Error. Too more letters in color numbers", true);
+		ft_put_error("Error. Incorrect argument in color line", true);
 	check_values_rgb(line);
-	i = 0;
-	j = -1;
-	while (line[++i] && j < 3)
-		color[++j] = ft_atoi_base(line[i], "0123456789");
+	i = 1;
+	j = 0;
+	while (line[i] && j < 3)
+	{
+		color[j] = ft_atoi(line[i]);
+		i++;
+		j++;
+	}
 	return (rgb_to_int(color[0], color[1], color[2]));
 }

@@ -6,31 +6,30 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/09 17:27:32 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/10 12:17:25 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 #include "../../libs/libft/libft.h"
 
-void	remove_newline(char *line)
+void remove_newline(char *line)
 {
-	int	len;
+	int len;
 
 	len = (int)ft_strlen(line);
-	while (len > 0 && (line[len - 1] == '\n' || line[len - 1] == ' '
-			|| line[len - 1] == '\t'))
+	while (len > 0 && (line[len - 1] == '\n' || line[len - 1] == ' ' || line[len - 1] == '\t'))
 	{
 		line[len - 1] = '\0';
 		len--;
 	}
 }
 
-static int	ft_count_word(char *str)
+static int ft_count_word(char *str)
 {
-	int	i;
-	int	count;
-	int	flag;
+	int i;
+	int count;
+	int flag;
 
 	count = 0;
 	i = 0;
@@ -55,12 +54,12 @@ static int	ft_count_word(char *str)
 	return (count + 1);
 }
 
-char	*clean_spaces_str(char *str)
+char *clean_spaces_str(char *str)
 {
-	char	*res;
-	int		i;
-	int		j;
-	int		flag;
+	char *res;
+	int i;
+	int j;
+	int flag;
 
 	res = ft_calloc(ft_count_word(str), sizeof(char));
 	if (!res)
@@ -87,9 +86,9 @@ char	*clean_spaces_str(char *str)
 	return (res);
 }
 
-void	test_print(t_data *data)
+void test_print(t_data *data)
 {
-	int	i;
+	int i;
 
 	printf("NO PATH => %s\n", data->no_path);
 	printf("EA PATH => %s\n", data->ea_path);
@@ -106,6 +105,6 @@ void	test_print(t_data *data)
 			i++;
 		}
 	}
+	printf("player {%d, %d}, View %c\n", data->player.x,
+		data->player.y, data->player.view);
 }
-
-
