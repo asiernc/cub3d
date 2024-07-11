@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:33:46 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/10 12:16:16 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/11 14:28:14 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int	check_required_data_for_map(t_cub3d *cub3d)
 {
 	if (cub3d->data.floor == 4294967295
 		|| cub3d->data.ceil == 4294967295)
-		ft_put_error("Map data error", true);
-	else if (!cub3d->data.no_path || !cub3d->data.no_path
-		|| !cub3d->data.no_path || !cub3d->data.no_path)
-		ft_put_error("Missing orientation texture", true);
+		ft_put_error(cub3d, "Map data error", true);
+	else if (!cub3d->data.no_path || !cub3d->data.we_path
+		|| !cub3d->data.ea_path || !cub3d->data.so_path)
+		ft_put_error(cub3d, "Missing orientation texture", true);
 	return (EXIT_SUCCESS);
 }
 
@@ -66,7 +66,7 @@ void	check_inside_map(t_cub3d *cub3d)
 					|| map[i][j + 1] == ' ' || map[i][j - 1] == ' ')
 				{
 					fprintf(stderr, "In {%d, %d} the '0' has not been correctly closed.\n", j, i);
-					ft_put_error("Map error.", true);
+					ft_put_error(cub3d, "Map error.", true);
 				}
 			j++;
 		}
@@ -84,15 +84,18 @@ void	check_wall_map(t_cub3d *cub3d)
 	map = cub3d->data.map;
 	while (map[i])
 	{
+		printf("|%s|\n", map[i]);
 		j = 0;
 		while (map[i][j])
 		{
-			while (ft_isspace(map[i][j]))
+			while (j < cub3d->data.width && ft_isspace(map[i][j]))
 				j++;
-			if ((i == 0 || i == cub3d->data.height - 1) && map[i][j] != '1')
-				ft_put_error("Map incorrect position on top/bottom row", true);
-			if ((j == 0 || j == cub3d->data.width - 1) && map[i][j] != '1')
-				ft_put_error("Map incorrect position on left/right column",
+			if (map[i][j])
+				break ;
+			if ((i == 0 || i == cub3d->data.height - 1) && (map[i][j] != '1' || map[i][j] == ' '))
+				ft_put_error(cub3d, "Map incorrect position on top/bottom row", true);
+			if ((j == 0 || j == cub3d->data.width - 1) && (map[i][j] != '1' || map[i][j] == ' '))
+				ft_put_error(cub3d, "Map incorrect position on left/right column",
 					true);
 			j++;
 		}
@@ -138,7 +141,7 @@ void	check_player(t_cub3d *cub3d)
 		i[0]++;
 	}
 	if (i[2] != 1)
-		ft_put_error("Error Only one player", true);
+		ft_put_error(cub3d, "Error Only one player", true);
 }
 
 
@@ -156,7 +159,7 @@ int	check_all_data(t_cub3d *cub3d)
 	if (!cub3d->data.map)
 		flag++;
 	if (flag == 3)
-		ft_put_error("Map error", true);
+		ft_put_error(cub3d, "Map error", true);
 	check_wall_map(cub3d);
 	check_player(cub3d);
 	check_inside_map(cub3d);

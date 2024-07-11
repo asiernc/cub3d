@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:33:46 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/10 12:22:24 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/11 14:33:26 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static bool	check_more_letters(char **line)
 	return (false);
 }
 
-static void	check_values_rgb(char **line)
+static void	check_values_rgb(t_cub3d *cub3d, char **line)
 {
 	int	i;
 	int	num;
@@ -51,12 +51,12 @@ static void	check_values_rgb(char **line)
 	{
 		num = ft_atoi(line[i]);
 		if (num < 0 || num > 255)
-			ft_put_error("Error. Color out of RGB range", true);
+			ft_put_error(cub3d, "Error. Color out of RGB range", true);
 		counter++;
 		i++;
 	}
 	if (counter != 3)
-		ft_put_error("Error. Missing RGB color", true);
+		ft_put_error(cub3d, "Error. Missing RGB color", true);
 }
 
 unsigned int	rgb_to_int(int red, int green, int blue)
@@ -70,15 +70,15 @@ unsigned int	rgb_to_int(int red, int green, int blue)
 	return (color);
 }
 
-unsigned int	read_colors(char **line)
+unsigned int	read_colors(t_cub3d *cub3d, char **line)
 {
 	int				color[3];
 	int				i;
 	int				j;
 
 	if (check_more_letters(line) == true)
-		ft_put_error("Error. Incorrect argument in color line", true);
-	check_values_rgb(line);
+		ft_put_error(cub3d, "Error. Incorrect argument in color line", true);
+	check_values_rgb(cub3d, line);
 	i = 1;
 	j = 0;
 	while (line[i] && j < 3)

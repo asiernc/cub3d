@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/09 13:07:24 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/11 15:51:32 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	get_height_width(t_cub3d *cub3d, char *file_path)
 
 	fd = open(file_path, O_RDONLY, 0644);
 	if (fd < 0)
-		ft_put_error("Open map file error", false);
+		ft_put_error(cub3d, "Open map file error", false);
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -30,7 +30,7 @@ void	get_height_width(t_cub3d *cub3d, char *file_path)
 		remove_newline(line);
 		if (check_map_line(line) == 1)
 		{
-			width = ft_strlen(line);
+			width = ft_strlen_map(line);
 			if (width > cub3d->data.width)
 				cub3d->data.width = width;
 			cub3d->data.height++;
@@ -39,7 +39,32 @@ void	get_height_width(t_cub3d *cub3d, char *file_path)
 	}
 	close(fd);
 	if (cub3d->data.height <= 2 || cub3d->data.width <= 2)
-		ft_put_error("Map too small", true);
+		ft_put_error(cub3d, "Map too small", true);
+}
+
+static char	*dup_map_line(char *str, int witdh)
+{
+	char	*cpy;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	if (!str)
+		return (NULL);
+	cpy = ft_calloc(witdh, sizeof(char));
+	if (!cpy)
+		return (NULL);
+	ft_memset(cpy, ' ', witdh - 1);
+	while (str[i] != '\0')
+	{
+		if (str[i] == '\t')
+			j += 3;
+		else
+			cpy[j++] = str[i];
+		i++;
+	}
+	return (cpy);
 }
 
 void	fill_map(t_cub3d *cub3d, char *line)
@@ -51,9 +76,9 @@ void	fill_map(t_cub3d *cub3d, char *line)
 	{
 		cub3d->data.map = malloc(sizeof(char *) * (cub3d->data.height + 1));
 		if (!cub3d->data.map)
-			ft_put_error("malloc error", true);
+			ft_put_error(cub3d, "malloc error", true);
 	}
-	cub3d->data.map[i] = ft_strdup(line);
+	cub3d->data.map[i] = dup_map_line(line, cub3d->data.width);
 	i++;
 	if (i == cub3d->data.height)
 		cub3d->data.map[i] = NULL;

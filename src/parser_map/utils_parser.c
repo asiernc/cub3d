@@ -6,12 +6,29 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/10 12:17:25 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/11 12:28:46 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 #include "../../libs/libft/libft.h"
+
+int	ft_strlen_map(char *str)
+{
+	int i;
+	int	flag;
+
+	i = 0;
+	flag = 0;
+	while (str[i])
+	{
+		if (str[i] == '\t')
+			flag++;
+		i++;
+	}
+	i += flag * 3;
+	return (i);
+}
 
 void remove_newline(char *line)
 {

@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:55:27 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/09 11:33:04 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/11 10:27:00 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 
 	i = 0;
 	j = 0;
+	if (!big)
+		return (NULL);
 	if (little[i] == '\0' || little == NULL)
 		return ((char *)big);
 	while (big[i] != '\0' && i < len)

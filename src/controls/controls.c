@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 20:59:20 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/10 12:09:17 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/11 15:13:07 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ void	on_key(mlx_key_data_t e, void *cub3d)
 int	on_close(t_cub3d *cub3d)
 {
 	mlx_close_window(cub3d->mlx);
-	ft_free_all(cub3d);
+	//ft_free_all(cub3d);
 	return (0);
 }

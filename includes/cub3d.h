@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/10 12:55:02 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/11 15:17:10 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void			fill_map(t_cub3d *cub3d, char *line);
 // Utils parser
 
 void			remove_newline(char *line);
+int				ft_strlen_map(char *str);
 char			*clean_spaces_str(char *str);
 int				check_map_line(char *line);
 int				check_required_data_for_map(t_cub3d *cub3d);
@@ -90,7 +91,7 @@ void			test_print(t_data *data);
 
 // Color utils
 
-unsigned int	read_colors(char **line);
+unsigned int	read_colors(t_cub3d *cub3d, char **line);
 unsigned int	rgb_to_int(int red, int green, int blue);
 
 // Controls
@@ -109,9 +110,10 @@ void			cam_right(t_cub3d *cub3d);
 
 
 // Handle errors
-void			ft_put_error(const char *err_msg, bool flag);
+void			ft_put_error(t_cub3d *cub3d, const char *err_msg, bool flag);
 
 // Free
+void			ft_free_parser(t_cub3d *cub3d);
 void			ft_free_all(t_cub3d *cub3d);
 
 #endif
