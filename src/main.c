@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:02:56 by asiercara         #+#    #+#             */
-/*   Updated: 2024/07/10 13:21:26 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/11 10:58:27 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ static void	init_data_struct(t_data *data)
 
 static void	texture_to_img(t_cub3d *cub3d, char *path, mlx_image_t *img)
 {
-	xpm_t		*xpm;
+	xpm_t	*xpm;
 
+	printf("Try to open %s\n", path);
 	xpm = mlx_load_xpm42(path);
 	if (!xpm)
 		ft_put_error("Load XPM error", false);
@@ -39,9 +40,9 @@ static void	texture_to_img(t_cub3d *cub3d, char *path, mlx_image_t *img)
 static void	ft_init_textures(t_cub3d *cub3d)
 {
 	texture_to_img(cub3d, cub3d->data.no_path, &cub3d->mlx.no_img);
-	texture_to_img(cub3d, cub3d->data.ea_path, &cub3d->mlx.ea_img);
-	texture_to_img(cub3d, cub3d->data.so_path, &cub3d->mlx.so_img);
-	texture_to_img(cub3d, cub3d->data.we_path, &cub3d->mlx.we_img);
+	//texture_to_img(cub3d, cub3d->data.ea_path, &cub3d->mlx.ea_img);
+	//texture_to_img(cub3d, cub3d->data.so_path, &cub3d->mlx.so_img);
+	//texture_to_img(cub3d, cub3d->data.we_path, &cub3d->mlx.we_img);
 }
 
 static void	ft_init_mlx(t_cub3d *cub3d)
