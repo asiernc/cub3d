@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/09 16:22:18 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/14 18:44:31 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,22 @@ static void	check_open_file(t_cub3d *cub3d, char *file_path)
 		ft_put_error("Open map file error", false);
 }
 
+static void	init_map(t_cub3d *cub3d)
+{
+	cub3d->data.map = malloc(sizeof(char *) * (cub3d->data.height + 1));
+	if (!cub3d->data.map)
+		ft_put_error("malloc error", true);
+	cub3d->data.map[cub3d->data.height] = NULL;
+}
+
 void	read_file(t_cub3d *cub3d, char *file_path)
 {
 	char	*line;
+	int		y;
 
+	y = 0;
 	check_open_file(cub3d, file_path);
+	init_map(cub3d);
 	while (1)
 	{
 		line = get_next_line(cub3d->data.fd);
@@ -40,7 +51,7 @@ void	read_file(t_cub3d *cub3d, char *file_path)
 			if (!check_map_line(line))
 				fill_data(cub3d, line);
 			else if (check_map_line(line))
-				fill_map(cub3d, line);
+				fill_map(cub3d, line, y++);
 		}
 		free(line);
 	}

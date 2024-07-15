@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/09 13:07:24 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/14 18:41:50 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,11 @@ void	get_height_width(t_cub3d *cub3d, char *file_path)
 		ft_put_error("Map too small", true);
 }
 
-void	fill_map(t_cub3d *cub3d, char *line)
+void	fill_map(t_cub3d *cub3d, char *line, int i)
 {
-	static int	i = 0;
-
-	check_required_data_for_map(cub3d);
-	if (cub3d->data.map == NULL)
-	{
-		cub3d->data.map = malloc(sizeof(char *) * (cub3d->data.height + 1));
-		if (!cub3d->data.map)
-			ft_put_error("malloc error", true);
-	}
+	if (!i)
+		check_required_data_for_map(cub3d); //Check on every line?? 
 	cub3d->data.map[i] = ft_strdup(line);
-	i++;
-	if (i == cub3d->data.height)
-		cub3d->data.map[i] = NULL;
 }
 
 

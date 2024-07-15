@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 20:59:20 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/10 13:21:59 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/15 13:05:47 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	on_key(mlx_key_data_t e, void *cub3d)
 		cam_right(cub3d);
 	else if (e.key == MLX_KEY_SPACE)
 		move_action(cub3d);
+	minimap(cub3d);
 }
 
 int	on_close(t_cub3d *cub3d)

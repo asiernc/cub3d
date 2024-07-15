@@ -6,7 +6,7 @@
 #    By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/03 20:31:11 by anovio-c          #+#    #+#              #
-#    Updated: 2024/07/10 12:04:16 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/07/14 19:02:02 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ CFLAGS      = -Wall -Wextra -Werror -g #-fsanitize=address
 RM          = rm -rf
 
 # Cub3d files
-SRCS        =	main.c \
+SRCS        =	main.c 						\
 				parser_map/read_file.c 		\
 				parser_map/checkers.c 		\
 				parser_map/utils_parser.c 	\
@@ -46,7 +46,8 @@ SRCS        =	main.c \
 				controls/controls.c			\
 				controls/move.c				\
 				controls/cam.c				\
-			handle_errors.c
+				minimap/minimap.c			\
+				handle_errors.c
 
 OBJS        = $(addprefix obj/, $(SRCS:%.c=%.o))
 DEPS        = $(addprefix obj/, $(SRCS:%.c=%.d))
@@ -71,7 +72,7 @@ $(MLX_A):
 	@echo "\033[1;32m\033[1mCompiled $(MLX_A).\033[0m"
 
 dir:
-	@mkdir -p obj obj/parser_map obj/controls
+	@mkdir -p obj obj/parser_map obj/controls obj/minimap
 
 obj/%.o:	src/%.c Makefile 
 	@echo "\033[1mCompiling $<...\033[0m"

@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/11 10:57:07 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/15 12:39:55 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	check_fill_textures(char **key, char *value)
 {
 	if (*key)
 		ft_put_error("Error. Duplicate same orientation.", true);
-	if (!ft_strnstr_end(value, ".xpm42"))
+	if (!ft_strnstr_end(value, ".xpm"))
 		ft_put_error("Error. Texture file type is not .xpm", true);
 	*key = ft_strdup(value);
 }

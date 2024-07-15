@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/10 13:16:16 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/15 13:03:28 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,13 @@
 # include <stdbool.h>
 # include "../libs/MLX42/include/MLX42/MLX42.h"
 
-# define WIDTH 720
-# define HEIGHT 480
+# define WIDTH 1280
+# define HEIGHT 720
+# define MAP_X 5
+# define MAP_Y 4
+# define MAP_WALL_COLOR 0x000000FF
+# define MAP_FLOOR_COLOR 0xFFFFFFFF
+# define MAP_PLAYER_COLOR 0xFF0000FF
 
 typedef struct s_player
 {
@@ -34,22 +39,24 @@ typedef struct s_player
 
 typedef struct s_data
 {
-	int						fd;
-	char					*map_file_path;
-	int						height;
-	int						width;
-	char					**map;
-	t_player				player;
-	char					*no_path;
-	char					*ea_path;
-	char					*so_path;
-	char					*we_path;
-	unsigned int			ceil;
-	unsigned int			floor;
+	int				fd;
+	char			*map_file_path;
+	int				height;
+	int				width;
+	char			**map;
+	t_player		player;
+	char			*no_path;
+	char			*ea_path;
+	char			*so_path;
+	char			*we_path;
+	unsigned int	ceil;
+	unsigned int	floor;
 }	t_data;
 
 typedef struct s_mlx
 {
+	double		map_tile;
+	mlx_image_t	*map_img;
 	mlx_image_t	no_img;
 	mlx_image_t	ea_img;
 	mlx_image_t	so_img;
@@ -59,8 +66,8 @@ typedef struct s_mlx
 typedef struct s_cub3d
 {
 	void	*win;
-	t_mlx	mlx;
 	t_data	data;
+	t_mlx	mlx;
 
 }	t_cub3d;
 
@@ -74,7 +81,7 @@ void			get_height_width(t_cub3d *cub3d, char *file_path);
 int				fill_data(t_cub3d *cub3d, char *line);
 void			fill_textures(t_cub3d *cub3d, char **line);
 void			fill_colors(t_cub3d *cub3d, char **line);
-void			fill_map(t_cub3d *cub3d, char *line);
+void			fill_map(t_cub3d *cub3d, char *line, int y);
 
 // Utils parser
 
@@ -113,5 +120,8 @@ void			ft_put_error(const char *err_msg, bool flag);
 
 // Free
 void			ft_free_all(t_cub3d *cub3d);
+
+// MiniMap
+void	minimap(t_cub3d *cub3d);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:02:56 by asiercara         #+#    #+#             */
-/*   Updated: 2024/07/11 10:58:27 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/14 18:59:14 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,14 @@ static void	texture_to_img(t_cub3d *cub3d, char *path, mlx_image_t *img)
 	if (!img)
 		ft_put_error("Transform XPM to IMG error", false);
 }
+
 static void	ft_init_textures(t_cub3d *cub3d)
 {
+	return ;
 	texture_to_img(cub3d, cub3d->data.no_path, &cub3d->mlx.no_img);
-	//texture_to_img(cub3d, cub3d->data.ea_path, &cub3d->mlx.ea_img);
-	//texture_to_img(cub3d, cub3d->data.so_path, &cub3d->mlx.so_img);
-	//texture_to_img(cub3d, cub3d->data.we_path, &cub3d->mlx.we_img);
+	texture_to_img(cub3d, cub3d->data.ea_path, &cub3d->mlx.ea_img);
+	texture_to_img(cub3d, cub3d->data.so_path, &cub3d->mlx.so_img);
+	texture_to_img(cub3d, cub3d->data.we_path, &cub3d->mlx.we_img);
 }
 
 static void	ft_init_mlx(t_cub3d *cub3d)
@@ -64,6 +66,7 @@ int	main(int argc, char **argv)
 	read_file(&cub3d, argv[1]);
 	ft_init_mlx(&cub3d);
 	ft_init_textures(&cub3d);
+	minimap(&cub3d);
 	mlx_loop(cub3d.win);
 	mlx_terminate(cub3d.win);
 	return (0);
