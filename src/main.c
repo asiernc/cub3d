@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:02:56 by asiercara         #+#    #+#             */
-/*   Updated: 2024/07/11 14:29:03 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/15 17:04:50 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ static void	init_data_struct(t_data *data)
 	data->ea_path = NULL;
 	data->so_path = NULL;
 	data->we_path = NULL;
+	data->map_file_path = NULL;
 	data->ceil = 4294967295;
 	data->floor = 4294967295;
+	data->flag_complete = 0;
 }
 
 static void	ft_init_mlx(t_cub3d *cub3d)

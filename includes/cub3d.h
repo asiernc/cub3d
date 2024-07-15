@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/11 15:17:10 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/15 16:15:05 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_data
 	char					*we_path;
 	unsigned int			ceil;
 	unsigned int			floor;
+	int						flag_complete;
 }	t_data;
 
 typedef struct s_image
@@ -74,7 +75,7 @@ void			get_height_width(t_cub3d *cub3d, char *file_path);
 int				fill_data(t_cub3d *cub3d, char *line);
 void			fill_textures(t_cub3d *cub3d, char **line);
 void			fill_colors(t_cub3d *cub3d, char **line);
-void			fill_map(t_cub3d *cub3d, char *line);
+void			fill_map(t_cub3d *cub3d, char *line, int i);
 
 // Utils parser
 

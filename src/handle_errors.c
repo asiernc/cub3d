@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 12:18:21 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/11 15:37:35 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/15 10:04:04 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_free_parser(t_cub3d *cub3d)
 	int	i;
 
 	i = 0;
-	if (cub3d->data.map)
+	if (cub3d && cub3d->data.map)
 	{
 		while (cub3d->data.map[i])
 		{
@@ -37,7 +37,7 @@ void	ft_free_parser(t_cub3d *cub3d)
 		}
 		free(cub3d->data.map);
 	}
-	if (cub3d->data.map_file_path)
+	if (cub3d && cub3d->data.map_file_path)
 		free(cub3d->data.map_file_path);
 	// why double-free when I want free path textures
 }
