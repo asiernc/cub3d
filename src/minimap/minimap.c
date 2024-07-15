@@ -6,18 +6,33 @@
 /*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 17:57:44 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/15 13:06:40 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/15 18:47:00 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 #include "../../libs/libft/libft.h"
 
-static void	init_map(t_cub3d *cub3d, int w, int h)
+static double	get_size(t_cub3d *cub3d)
 {
-	cub3d->mlx.map_img = mlx_new_image(cub3d->win, w, h);
+	double	sizeX;
+	double	sizeY;
+
+	sizeX = (WIDTH + 0.0) / MAP_X / cub3d->data.width;
+	sizeY = (HEIGHT + 0.0) / MAP_Y / cub3d->data.height;
+	if (sizeX < sizeY)
+		return (sizeX);
+	return (sizeY);
+}
+
+static void	init_map(t_cub3d *cub3d)
+{
+	double	size;
+
+	size = get_size(cub3d);
+	cub3d->mlx.map_img = mlx_new_image(cub3d->win, size * cub3d->data.width, size * cub3d->data.height);
 	if (!cub3d->mlx.map_img)
-		return ;//error;
+		ft_put_error(cub3d, "MLX new image", false);
 }
 
 static int	get_color(t_cub3d *cub3d, int map_x, int map_y)
@@ -40,25 +55,22 @@ static int	get_color(t_cub3d *cub3d, int map_x, int map_y)
 
 static void	draw_map(t_cub3d *cub3d)
 {
-	int		x;
-	int		y;
+	int	x;
+	int	y;
 
 	y = -1;
 	while (++y < (int)cub3d->mlx.map_img->height)
 	{
 		x = -1;
 		while (++x < (int)cub3d->mlx.map_img->width)
-			mlx_put_pixel(cub3d->mlx.map_img, x, y, get_color(cub3d, x , y));
+			mlx_put_pixel(cub3d->mlx.map_img, x, y, get_color(cub3d, x, y));
 	}
 }
 
 void	minimap(t_cub3d *cub3d)
 {
-	if (cub3d->data.width < cub3d->data.height)
-		init_map(cub3d, WIDTH / MAP_X, HEIGHT / MAP_X);
-	else
-		init_map(cub3d, WIDTH / MAP_Y, HEIGHT / MAP_Y);
+	init_map(cub3d);
 	draw_map(cub3d);
 	if (mlx_image_to_window(cub3d->win, cub3d->mlx.map_img, 0, 0) < 0)
-        return ;	
+		ft_put_error(cub3d, "MLX image to win", false);
 }
