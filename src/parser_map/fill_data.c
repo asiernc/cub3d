@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/11 15:11:33 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/15 17:10:54 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,10 @@ int	fill_data(t_cub3d *cub3d, char *line)
 
 static void	check_fill_textures(t_cub3d *cub3d, char **key, char *value)
 {
-	int	fd;
-
 	if (*key)
 		ft_put_error(cub3d, "Error. Duplicate same orientation.", true);
 	if (!ft_strnstr_end(value, ".xpm"))
 		ft_put_error(cub3d, "Error. Texture file type is not .xpm", true);
-	fd = open(value, O_RDONLY, 0644);
-	if (fd < 0)
-		ft_put_error(cub3d, "Error. Open texture file error.", false);
-	close(fd);
 	*key = ft_strdup(value);
 }
 

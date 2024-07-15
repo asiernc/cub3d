@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/15 16:15:05 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/15 17:07:38 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,13 @@
 # include <stdbool.h>
 # include "../libs/MLX42/include/MLX42/MLX42.h"
 
-# define WIDTH 720
-# define HEIGHT 480
+# define WIDTH 1280
+# define HEIGHT 720
+# define MAP_X 5
+# define MAP_Y 4
+# define MAP_WALL_COLOR 0x000000FF
+# define MAP_FLOOR_COLOR 0xFFFFFFFF
+# define MAP_PLAYER_COLOR 0xFF0000FF
 
 typedef struct s_player
 {
@@ -49,19 +54,21 @@ typedef struct s_data
 	int						flag_complete;
 }	t_data;
 
-typedef struct s_image
+typedef struct s_mlx
 {
-	void	*img;
-	char	*addr;
-	int		bpp;
-	int		line_length;
-	int		endian;
-}	t_image;
+	double		map_tile;
+	mlx_image_t	*map_img;
+	mlx_image_t	no_img;
+	mlx_image_t	ea_img;
+	mlx_image_t	so_img;
+	mlx_image_t	we_img;
+}	t_mlx;
 
 typedef struct s_cub3d
 {
-	void	*mlx;
+	void	*win;
 	t_data	data;
+	t_mlx	mlx;
 
 }	t_cub3d;
 
@@ -116,5 +123,8 @@ void			ft_put_error(t_cub3d *cub3d, const char *err_msg, bool flag);
 // Free
 void			ft_free_parser(t_cub3d *cub3d);
 void			ft_free_all(t_cub3d *cub3d);
+
+// MiniMap
+void	minimap(t_cub3d *cub3d);
 
 #endif
