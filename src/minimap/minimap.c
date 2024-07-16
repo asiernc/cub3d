@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 17:57:44 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/16 14:44:35 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/16 14:56:41 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void	minimap(t_cub3d *cub3d)
 {
 	double	size;
 
-	printf("%d %d\n", cub3d->mlx.player.y, cub3d->mlx.player.x);
 	size = get_size(cub3d);
 	cub3d->mlx.map_img = mlx_new_image(cub3d->win, size * cub3d->data.width, size * cub3d->data.height);
 	if (!cub3d->mlx.map_img)

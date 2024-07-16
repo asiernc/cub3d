@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:02:56 by asiercara         #+#    #+#             */
-/*   Updated: 2024/07/16 14:44:09 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/16 14:54:40 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static void	texture_to_img(t_cub3d *cub3d, char *path, mlx_image_t *img)
 {
 	xpm_t	*xpm;
 
-	printf("Try to open %s\n", path);
 	xpm = mlx_load_xpm42(path);
 	if (!xpm)
 		ft_put_error(cub3d, "Load XPM error", false);
