@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_data.c                                        :+:      :+:    :+:   */
+/*   fill_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/16 09:24:15 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/16 16:22:35 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,3 @@ void	fill_textures(t_cub3d *cub3d, char **line)
 	else if (!ft_strncmp(line[0], "EA", 3))
 		check_fill_textures(cub3d, &cub3d->data.ea_path, line[1]);
 }
-
-

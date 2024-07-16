@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color_utils.c                                      :+:      :+:    :+:   */
+/*   fill_colors.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:33:46 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/16 09:23:13 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/16 16:19:27 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	fill_colors(t_cub3d *cub3d, char **line)
 		return ;
 	if (!ft_strncmp(line[0], "F", 2))
 		cub3d->data.floor = read_colors(cub3d, line);
-	if (!ft_strncmp(line[0], "C", 2))
+	else if (!ft_strncmp(line[0], "C", 2))
 		cub3d->data.ceil = read_colors(cub3d, line);
 }
 
@@ -45,6 +45,7 @@ unsigned int	read_colors(t_cub3d *cub3d, char **line)
 	}
 	return (rgb_to_int(color[0], color[1], color[2]));
 }
+
 unsigned int	rgb_to_int(int red, int green, int blue)
 {
 	unsigned int		color;

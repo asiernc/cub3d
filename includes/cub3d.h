@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/16 12:10:12 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/16 16:22:25 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_data
 	char					*we_path;
 	unsigned int			ceil;
 	unsigned int			floor;
+	int						flag_map;
 	int						flag_complete;
 }	t_data;
 
@@ -71,7 +72,6 @@ typedef struct s_cub3d
 	t_mlx	mlx;
 
 }	t_cub3d;
-
 
 // Functions
 
@@ -117,7 +117,6 @@ void			move_action(t_cub3d *cub3d);
 void			cam_left(t_cub3d *cub3d);
 void			cam_right(t_cub3d *cub3d);
 
-
 // Handle errors
 void			ft_put_error(t_cub3d *cub3d, const char *err_msg, bool flag);
 
@@ -126,6 +125,6 @@ void			ft_free_parser(t_cub3d *cub3d);
 void			ft_free_all(t_cub3d *cub3d);
 
 // MiniMap
-void	minimap(t_cub3d *cub3d);
+void			minimap(t_cub3d *cub3d);
 
 #endif

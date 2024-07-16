@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/16 09:52:12 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/16 15:34:30 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	read_file(t_cub3d *cub3d, char *file_path)
 		if (line[0] != '\n')
 		{
 			remove_newline(line);
-			if (cub3d->data.flag_complete == 1)
+			if (cub3d->data.flag_complete == 1 && line[0] != '\0')
 				ft_put_error(cub3d, "file letter end", true);
 			if (!check_map_line(line))
 				fill_data(cub3d, line);

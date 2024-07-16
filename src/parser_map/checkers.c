@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:33:46 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/16 11:03:51 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/16 16:22:15 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ void	check_inside_map(t_cub3d *cub3d)
 		{
 			if (map[i][j] == '0')
 			{
-			 if ((j > 0 && map[i][j - 1] == ' ') ||
-                    (map[i][j + 1] && map[i][j + 1] == ' ') ||
-                    (i > 0 && map[i - 1][j] == ' ') ||
-                    (map[i + 1] && map[i + 1][j] == ' '))
+				if ((j > 0 && map[i][j - 1] == ' ') ||
+					(map[i][j + 1] && map[i][j + 1] == ' ') ||
+					(i > 0 && map[i - 1][j] == ' ') ||
+					(map[i + 1] && map[i + 1][j] == ' '))
 				{
 					fprintf(stderr, "In {%d, %d} the '0' has not been correctly closed.\n", j, i);
 					ft_put_error(cub3d, "Map error.", true);
@@ -78,31 +78,37 @@ void	check_inside_map(t_cub3d *cub3d)
 	}
 }
 
-void check_wall_map(t_cub3d *cub3d)
+void	check_wall_map(t_cub3d *cub3d)
 {
-    char	**map;
-    int		i;
-    int		j;
+	char	**map;
+	int		i;
+	int		j;
 
 	map = cub3d->data.map;
-    j = 0;
-    while (j < cub3d->data.width)
-    {
-        if (!ft_isspace(map[0][j]) && map[0][j] != '1')
-            ft_put_error(cub3d, "Map error: Invalid character on top row.", true);
-        if (!ft_isspace(map[cub3d->data.height - 1][j]) && map[cub3d->data.height - 1][j] != '1')
-            ft_put_error(cub3d, "Map error: Invalid character on bottom row.", true);
-        j++;
-    }
+	j = 0;
+	while (j < cub3d->data.width)
+	{
+		if (!ft_isspace(map[0][j]) && map[0][j] != '1')
+			ft_put_error(cub3d, "Map error: Invalid character on top row.",
+				true);
+		if (!ft_isspace(map[cub3d->data.height - 1][j])
+			&& map[cub3d->data.height - 1][j] != '1')
+			ft_put_error(cub3d, "Map error: Invalid character on bottom row.",
+				true);
+		j++;
+	}
 	i = 0;
-    while (i < cub3d->data.height)
-    {
-        if (!ft_isspace(map[i][0]) && map[i][0] != '1')
-            ft_put_error(cub3d, "Map error: Invalid character on left column.", true);
-        if (!ft_isspace(map[i][cub3d->data.width - 1]) && map[i][cub3d->data.width - 1] != '1')
-            ft_put_error(cub3d, "Map error: Invalid character on right column.", true);
-        i++;
-    }
+	while (i < cub3d->data.height)
+	{
+		if (!ft_isspace(map[i][0]) && map[i][0] != '1')
+			ft_put_error(cub3d, "Map error: Invalid character on left column.",
+				true);
+		if (!ft_isspace(map[i][cub3d->data.width - 1])
+			&& map[i][cub3d->data.width - 1] != '1')
+			ft_put_error(cub3d, "Map error: Invalid character on right column.",
+				true);
+		i++;
+	}
 }
 
 static void	check_in_cross(t_cub3d *cub3d, char **map, int x, int y)
@@ -110,7 +116,6 @@ static void	check_in_cross(t_cub3d *cub3d, char **map, int x, int y)
 	if (map[y - 1][x] == ' ' || map[y + 1][x] == ' '
 		|| map[y][x - 1] == ' ' || map[y][x + 1] == ' ')
 		ft_put_error(cub3d, "The player is not properly locked", true);
-	
 }
 
 void	replace_player(t_cub3d *cub3d, char **map, int i[3], char player_view)
@@ -120,7 +125,7 @@ void	replace_player(t_cub3d *cub3d, char **map, int i[3], char player_view)
 		if (i[0] == 0 || i[1] == 0 || i[0] == cub3d->data.width
 			|| i[1] == cub3d->data.height)
 			ft_put_error(cub3d, "Player in incorrect map position",
-					true);
+				true);
 		check_in_cross(cub3d, cub3d->data.map, i[1], i[0]);
 		cub3d->data.player.x = i[1];
 		cub3d->data.player.y = i[0];
