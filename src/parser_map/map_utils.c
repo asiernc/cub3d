@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/16 09:29:11 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/16 12:21:40 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	get_height_width(t_cub3d *cub3d, char *file_path)
 		if (!line)
 			break ;
 		remove_newline(line);
+		if (cub3d->data.height != 0 && !line[0])
+			ft_put_error(cub3d, "File letter end error", true);
 		if (check_map_line(line) == 1)
 		{
 			width = ft_strlen_map(line);
