@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/15 17:12:18 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/16 09:52:12 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static void	init_map(t_cub3d *cub3d)
 {
-	cub3d->data.map = malloc(sizeof(char *) * (cub3d->data.height + 1));
+	cub3d->data.map = ft_calloc(cub3d->data.height + 1, sizeof(char *));
 	if (!cub3d->data.map)
 		ft_put_error(cub3d, "malloc error", true);
 	cub3d->data.map[cub3d->data.height] = NULL;
@@ -48,7 +48,6 @@ void	read_file(t_cub3d *cub3d, char *file_path)
 		if (line[0] != '\n')
 		{
 			remove_newline(line);
-			printf("VALOR DE I %d\n", i);
 			if (cub3d->data.flag_complete == 1)
 				ft_put_error(cub3d, "file letter end", true);
 			if (!check_map_line(line))

@@ -6,7 +6,7 @@
 #    By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/03 20:31:11 by anovio-c          #+#    #+#              #
-#    Updated: 2024/07/15 17:06:57 by anovio-c         ###   ########.fr        #
+#    Updated: 2024/07/16 09:28:23 by anovio-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,8 +40,9 @@ SRCS        =	main.c 						\
 				parser_map/read_file.c 		\
 				parser_map/checkers.c 		\
 				parser_map/utils_parser.c 	\
-				parser_map/color_utils.c 	\
-				parser_map/fill_data.c 		\
+				parser_map/fill_colors.c 	\
+				parser_map/fill_textures.c 	\
+				parser_map/fill_map.c 		\
 				parser_map/map_utils.c 		\
 				controls/controls.c			\
 				controls/move.c				\

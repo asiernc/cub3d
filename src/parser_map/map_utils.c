@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/15 17:11:20 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/16 09:29:11 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,42 +42,19 @@ void	get_height_width(t_cub3d *cub3d, char *file_path)
 		ft_put_error(cub3d, "Map too small", true);
 }
 
-static char	*dup_map_line(char *str, int witdh)
+int	ft_strlen_map(char *str)
 {
-	char	*cpy;
-	int		i;
-	int		j;
+	int i;
+	int	flag;
 
 	i = 0;
-	j = 0;
-	if (!str)
-		return (NULL);
-	cpy = ft_calloc((witdh + 1), sizeof(char));
-	if (!cpy)
-		return (NULL);
-	ft_memset(cpy, ' ', witdh);
-	cpy[witdh] = '\0';
-	while (str[i] != '\0')
+	flag = 0;
+	while (str[i])
 	{
 		if (str[i] == '\t')
-			j += 3;
-		else
-			cpy[j] = str[i];
+			flag++;
 		i++;
-		j++;
 	}
-	return (cpy);
+	i += flag * 3;
+	return (i);
 }
-
-void	fill_map(t_cub3d *cub3d, char *line, int i)
-{
-	if (i == 0)
-		check_required_data_for_map(cub3d);
-	if (i == cub3d->data.height - 1)
-		cub3d->data.flag_complete = 1;
-	cub3d->data.map[i] = dup_map_line(line, cub3d->data.width);
-}
-
-
-
-

@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 12:18:21 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/15 10:04:04 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/16 09:44:04 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	ft_free_parser(t_cub3d *cub3d)
 	{
 		while (cub3d->data.map[i])
 		{
-			free(cub3d->data.map[i]);
+			if (cub3d->data.map[i])
+				free(cub3d->data.map[i]);
 			i++;
 		}
 		free(cub3d->data.map);

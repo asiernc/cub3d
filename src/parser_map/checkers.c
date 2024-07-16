@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:33:46 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/15 17:10:08 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/16 11:03:51 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,14 @@ void check_wall_map(t_cub3d *cub3d)
     }
 }
 
+static void	check_in_cross(t_cub3d *cub3d, char **map, int x, int y)
+{
+	if (map[y - 1][x] == ' ' || map[y + 1][x] == ' '
+		|| map[y][x - 1] == ' ' || map[y][x + 1] == ' ')
+		ft_put_error(cub3d, "The player is not properly locked", true);
+	
+}
+
 void	replace_player(t_cub3d *cub3d, char **map, int i[3], char player_view)
 {
 	if (i[2] == 1)
@@ -113,7 +121,7 @@ void	replace_player(t_cub3d *cub3d, char **map, int i[3], char player_view)
 			|| i[1] == cub3d->data.height)
 			ft_put_error(cub3d, "Player in incorrect map position",
 					true);
-			// poner aqui doble chequeo en cruz una vez que pase este.
+		check_in_cross(cub3d, cub3d->data.map, i[1], i[0]);
 		cub3d->data.player.x = i[1];
 		cub3d->data.player.y = i[0];
 		cub3d->data.player.view = player_view;
@@ -123,7 +131,7 @@ void	replace_player(t_cub3d *cub3d, char **map, int i[3], char player_view)
 		return ;
 }
 
- // i[0] == i; i[1] == j; i[2] == counter;
+ // i[0] == i || y; i[1] == j || x; i[2] == counter;
 
 void	check_player(t_cub3d *cub3d)
 {

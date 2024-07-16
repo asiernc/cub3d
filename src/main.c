@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:02:56 by asiercara         #+#    #+#             */
-/*   Updated: 2024/07/15 17:09:11 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/16 09:34:52 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	init_data_struct(t_data *data)
 	data->flag_complete = 0;
 }
 
-static void	texture_to_img(t_cub3d *cub3d, char *path, mlx_image_t *img)
+/*static void	texture_to_img(t_cub3d *cub3d, char *path, mlx_image_t *img)
 {
 	xpm_t	*xpm;
 
@@ -56,7 +56,7 @@ static void	ft_init_mlx(t_cub3d *cub3d)
 		ft_put_error(cub3d, "Error establishing a connection to the graphics system.",
 			true);
 	mlx_key_hook(cub3d->win, &on_key, (void *)cub3d);
-}
+}*/
 
 int	main(int argc, char **argv)
 {
@@ -66,11 +66,11 @@ int	main(int argc, char **argv)
 		ft_put_error(NULL, "Wrong arguments", true);
 	init_data_struct(&cub3d.data);
 	read_file(&cub3d, argv[1]);
-	ft_init_mlx(&cub3d);
-	ft_init_textures(&cub3d);
-	minimap(&cub3d);
-	mlx_loop(cub3d.win);
-	mlx_terminate(cub3d.win);
+	//ft_init_mlx(&cub3d);
+	//ft_init_textures(&cub3d);
+	//minimap(&cub3d);
+	//mlx_loop(cub3d.win);
+	//mlx_terminate(cub3d.win);
 	return (0);
 }
 

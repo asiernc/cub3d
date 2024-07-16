@@ -6,28 +6,26 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/11 12:28:46 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/16 09:27:17 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 #include "../../libs/libft/libft.h"
 
-int	ft_strlen_map(char *str)
+char	*prepare_line(t_cub3d *cub3d, char *str)
 {
-	int i;
-	int	flag;
+	char	*trimmed;
+	char	*clean;
 
-	i = 0;
-	flag = 0;
-	while (str[i])
-	{
-		if (str[i] == '\t')
-			flag++;
-		i++;
-	}
-	i += flag * 3;
-	return (i);
+	trimmed = NULL;
+	clean = NULL;
+	trimmed = ft_strtrim(str, " ");
+	if (!trimmed)
+		ft_put_error(cub3d, "Malloc error on trim", false);
+	clean = clean_spaces_str(trimmed);
+	free(trimmed);
+	return (clean);
 }
 
 void remove_newline(char *line)

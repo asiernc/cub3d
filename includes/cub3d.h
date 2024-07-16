@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/15 17:07:38 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/16 09:24:42 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void			check_wall_map(t_cub3d *cub3d);
 void			check_inside_map(t_cub3d *cub3d);
 void			check_player(t_cub3d *cub3d);
 int				check_all_data(t_cub3d *cub3d);
+char			*prepare_line(t_cub3d *cub3d, char *str);
 void			test_print(t_data *data);
 
 // Color utils

@@ -6,27 +6,12 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/15 17:10:54 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/16 09:24:15 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 #include "../../libs/libft/libft.h"
-
-static char	*prepare_line(t_cub3d *cub3d, char *str)
-{
-	char	*trimmed;
-	char	*clean;
-
-	trimmed = NULL;
-	clean = NULL;
-	trimmed = ft_strtrim(str, " ");
-	if (!trimmed)
-		ft_put_error(cub3d, "Malloc error on trim", false);
-	clean = clean_spaces_str(trimmed);
-	free(trimmed);
-	return (clean);
-}
 
 int	fill_data(t_cub3d *cub3d, char *line)
 {
@@ -71,12 +56,4 @@ void	fill_textures(t_cub3d *cub3d, char **line)
 		check_fill_textures(cub3d, &cub3d->data.ea_path, line[1]);
 }
 
-void	fill_colors(t_cub3d *cub3d, char **line)
-{
-	if (!line || !line[0])
-		return ;
-	if (!ft_strncmp(line[0], "F", 2))
-		cub3d->data.floor = read_colors(cub3d, line);
-	if (!ft_strncmp(line[0], "C", 2))
-		cub3d->data.ceil = read_colors(cub3d, line);
-}
+
