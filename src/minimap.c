@@ -6,23 +6,23 @@
 /*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 17:57:44 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/16 14:56:41 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/16 15:07:30 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
-#include "../../libs/libft/libft.h"
+#include "../includes/cub3d.h"
+#include "../libs/libft/libft.h"
 
 static double	get_size(t_cub3d *cub3d)
 {
-	double	sizeX;
-	double	sizeY;
+	double	size_x;
+	double	size_y;
 
-	sizeX = (WIDTH + 0.0) / MAP_X / cub3d->data.width;
-	sizeY = (HEIGHT + 0.0) / MAP_Y / cub3d->data.height;
-	if (sizeX < sizeY)
-		return (sizeX);
-	return (sizeY);
+	size_x = (WIDTH + 0.0) / MAP_X / cub3d->data.width;
+	size_y = (HEIGHT + 0.0) / MAP_Y / cub3d->data.height;
+	if (size_x < size_y)
+		return (size_x);
+	return (size_y);
 }
 
 static int	get_color(t_cub3d *cub3d, int map_x, int map_y)
@@ -81,7 +81,8 @@ void	minimap(t_cub3d *cub3d)
 	double	size;
 
 	size = get_size(cub3d);
-	cub3d->mlx.map_img = mlx_new_image(cub3d->win, size * cub3d->data.width, size * cub3d->data.height);
+	cub3d->mlx.map_img = mlx_new_image(cub3d->win,
+			size * cub3d->data.width, size * cub3d->data.height);
 	if (!cub3d->mlx.map_img)
 		ft_put_error(cub3d, "MLX new image", false);
 	draw_map(cub3d);
