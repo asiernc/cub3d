@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:02:56 by asiercara         #+#    #+#             */
-/*   Updated: 2024/07/16 12:10:37 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/16 14:44:09 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,23 @@ static void	ft_init_textures(t_cub3d *cub3d)
 	texture_to_img(cub3d, cub3d->data.we_path, &cub3d->mlx.we_img);
 }
 
+static void	init_mlx_struct(t_cub3d *cub3d)
+{
+	ft_init_textures(cub3d);
+	cub3d->mlx.player.x = (cub3d->data.player.x + 1.0) * TILE_SIZE - TILE_SIZE / 2;
+	cub3d->mlx.player.y = (cub3d->data.player.y + 1.0) * TILE_SIZE - TILE_SIZE / 2;
+	cub3d->mlx.player.cam_x = 0;
+	cub3d->mlx.player.cam_y = 0;
+	if (cub3d->data.player.view == 'N')
+		cub3d->mlx.player.cam_y = 1;
+	else if (cub3d->data.player.view == 'S')
+		cub3d->mlx.player.cam_y = -1;
+	else if (cub3d->data.player.view == 'E')
+		cub3d->mlx.player.cam_x = 1;
+	else if (cub3d->data.player.view == 'W')
+		cub3d->mlx.player.cam_x = -1;
+}
+
 static void	ft_init_mlx(t_cub3d *cub3d)
 {
 	cub3d->win = mlx_init(WIDTH, HEIGHT, "CUB3D", false);
@@ -66,8 +83,8 @@ int	main(int argc, char **argv)
 		ft_put_error(NULL, "Wrong arguments", true);
 	init_data_struct(&cub3d.data);
 	read_file(&cub3d, argv[1]);
+	init_mlx_struct(&cub3d);
 	ft_init_mlx(&cub3d);
-	ft_init_textures(&cub3d);
 	minimap(&cub3d);
 	mlx_loop(cub3d.win);
 	mlx_terminate(cub3d.win);

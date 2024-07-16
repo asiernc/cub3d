@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 21:32:35 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/15 13:07:43 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/16 14:28:44 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 void	move_front(t_cub3d *cub3d)
 {
-	cub3d->data.player.y--;
+	cub3d->mlx.player.y -= TILE_SIZE / 4;
 	printf("MOVE FRONT\n");
 }
 
 void	move_right(t_cub3d *cub3d)
 {
-	cub3d->data.player.x++;
+	cub3d->mlx.player.x += TILE_SIZE / 4;
 	printf("MOVE RIGHT\n");
 }
 
 void	move_back(t_cub3d *cub3d)
 {
-	cub3d->data.player.y++;
+	cub3d->mlx.player.y += TILE_SIZE / 4;
 	printf("MOVE BACK\n");
 }
 
 void	move_left(t_cub3d *cub3d)
 {
-	cub3d->data.player.x--;
+	cub3d->mlx.player.x -= TILE_SIZE / 4;
 	printf("MOVE LEFT\n");
 }
 

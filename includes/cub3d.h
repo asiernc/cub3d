@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/16 12:10:12 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/16 14:42:28 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@
 # define HEIGHT 720
 # define MAP_X 5
 # define MAP_Y 4
-# define MAP_WALL_COLOR 0x000000FF
-# define MAP_FLOOR_COLOR 0xFFFFFFFF
-# define MAP_PLAYER_COLOR 0xFF0000FF
+# define MAP_WALL_COLOR 0x00000080
+# define MAP_FLOOR_COLOR 0xFFFFFF80
+# define MAP_PLAYER_COLOR 0xFF000080
+# define MAP_EMPTY_COLOR 0x00000080
+# define TILE_SIZE 200
 
 typedef struct s_player
 {
@@ -54,14 +56,22 @@ typedef struct s_data
 	int						flag_complete;
 }	t_data;
 
+typedef struct s_player_mlx
+{
+	int	x;
+	int	y;
+	int	cam_x;
+	int	cam_y;
+}	t_player_mlx;
+
 typedef struct s_mlx
 {
-	double		map_tile;
-	mlx_image_t	*map_img;
-	mlx_image_t	no_img;
-	mlx_image_t	ea_img;
-	mlx_image_t	so_img;
-	mlx_image_t	we_img;
+	mlx_image_t		*map_img;
+	mlx_image_t		no_img;
+	mlx_image_t		ea_img;
+	mlx_image_t		so_img;
+	mlx_image_t		we_img;
+	t_player_mlx	player;
 }	t_mlx;
 
 typedef struct s_cub3d
