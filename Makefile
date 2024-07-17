@@ -24,7 +24,8 @@ MLX			= libs/MLX42/
 ifeq ($(UNAME_S), Linux)
 	MLXFLAGS		= -Ilibs/MLX42/include -ldl -lglfw -pthread -lm
 else ifeq ($(UNAME_S), Darwin)
-	MLXFLAGS	= -Ilibs/MLX42/include -framework Cocoa -framework OpenGL -framework IOKit -lglfw build/libmlx42.a
+	MLXFLAGS	=  -I/opt/homebrew/include -L/opt/homebrew/lib -lglfw -framework Cocoa -framework OpenGL -framework IOKit 
+#MLXFLAGS	= -Ilibs/MLX42/include -framework Cocoa -framework OpenGL -framework IOKit -lglfw build/libmlx42.a
 else
     $(error Unsupported OS: $(UNAME_S))
 endif
