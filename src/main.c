@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:02:56 by asiercara         #+#    #+#             */
-/*   Updated: 2024/07/16 16:25:35 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/16 16:28:12 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,10 @@ static void	ft_init_textures(t_cub3d *cub3d)
 static void	init_mlx_struct(t_cub3d *cub3d)
 {
 	ft_init_textures(cub3d);
-	cub3d->mlx.player.x = (cub3d->data.player.x + 1.0) * TILE_SIZE - TILE_SIZE / 2;
-	cub3d->mlx.player.y = (cub3d->data.player.y + 1.0) * TILE_SIZE - TILE_SIZE / 2;
+	cub3d->mlx.player.x = (cub3d->data.player.x + 1.0)
+		* TILE_SIZE - TILE_SIZE / 2;
+	cub3d->mlx.player.y = (cub3d->data.player.y + 1.0)
+		* TILE_SIZE - TILE_SIZE / 2;
 	cub3d->mlx.player.cam_x = 0;
 	cub3d->mlx.player.cam_y = 0;
 	if (cub3d->data.player.view == 'N')

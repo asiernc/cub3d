@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:33:46 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/16 16:22:15 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/17 11:29:45 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_map_line(char *line)
 		if (line[i] != '0' && line[i] != '1' && line[i] != 'N'
 			&& line[i] != 'S' && line[i] != 'E' && line[i] != 'W'
 			&& line[i] != ' ')
-			return (0);
+			ft_put_error(NULL, "Incorrect char in map content", true);
 		i++;
 	}
 	return (1);
@@ -153,8 +153,14 @@ void	check_player(t_cub3d *cub3d)
 		{
 			if (ft_isalpha(map[i[0]][i[1]]))
 			{
-				i[2]++;
-				replace_player(cub3d, map, i, map[i[0]][i[1]]);
+				if (map[i[0]][i[1]] == 'N' || map[i[0]][i[1]] == 'S'
+					|| map[i[0]][i[1]] == 'E' || map[i[0]][i[1]] == 'W')
+				{
+					i[2]++;
+					replace_player(cub3d, map, i, map[i[0]][i[1]]);
+				}
+				else
+					ft_put_error(cub3d, "Error. Unidentified player", true);
 			}
 			i[1]++;
 		}

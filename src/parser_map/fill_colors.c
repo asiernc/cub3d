@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:33:46 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/16 16:19:27 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/17 11:30:29 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,22 @@ static void	check_values_rgb(t_cub3d *cub3d, char **line);
 
 void	fill_colors(t_cub3d *cub3d, char **line)
 {
+	static int	counter = 0;
+
 	if (!line || !line[0])
 		return ;
+	if (counter >= 2)
+		ft_put_error(cub3d, "Error. Duplicate color.", true);
 	if (!ft_strncmp(line[0], "F", 2))
+	{
 		cub3d->data.floor = read_colors(cub3d, line);
+		counter++;
+	}
 	else if (!ft_strncmp(line[0], "C", 2))
+	{
 		cub3d->data.ceil = read_colors(cub3d, line);
+		counter++;
+	}
 }
 
 unsigned int	read_colors(t_cub3d *cub3d, char **line)

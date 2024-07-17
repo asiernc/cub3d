@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/16 16:08:31 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/17 11:08:20 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ static void	send_error(t_cub3d *cub3d, int fd, char *line)
 {
 	free(line);
 	close(fd);
-	ft_put_error(cub3d, "Error. After the map there cannot be any character",
-		true);
+	ft_put_error(cub3d, "Error. In the middle or after the map there cannot be any character", true);
 }
 
 void	get_height_width(t_cub3d *cub3d, char *file_path)
