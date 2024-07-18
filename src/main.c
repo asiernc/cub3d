@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:02:56 by asiercara         #+#    #+#             */
-/*   Updated: 2024/07/18 10:08:46 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/18 12:04:32 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 	read_file(&cub3d, argv[1]);
 	init_game_struct(&cub3d);
 	ft_init_mlx(&cub3d);
+	render(&cub3d);
 	minimap(&cub3d);
 	mlx_loop(cub3d.win);
 	mlx_terminate(cub3d.win);

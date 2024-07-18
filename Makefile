@@ -6,7 +6,7 @@
 #    By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/03 20:31:11 by anovio-c          #+#    #+#              #
-#    Updated: 2024/07/18 09:59:27 by anovio-c         ###   ########.fr        #
+#    Updated: 2024/07/18 12:08:13 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,8 @@ SRCS        =	main.c 						\
 				controls/controls.c			\
 				controls/move.c				\
 				controls/cam.c				\
+				render/init.c				\
+				render/render.c				\
 				minimap.c					\
 				handle_errors.c
 
@@ -73,7 +75,7 @@ $(MLX_A):
 	@echo "\033[1;32m\033[1mCompiled $(MLX_A).\033[0m"
 
 dir:
-	@mkdir -p obj obj/parser_map obj/controls
+	@mkdir -p obj obj/parser_map obj/controls obj/render
 
 obj/%.o:	src/%.c Makefile 
 	@echo "\033[1mCompiling $<...\033[0m"

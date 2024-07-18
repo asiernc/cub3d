@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 20:59:20 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/16 14:25:38 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/18 12:04:23 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	on_key(mlx_key_data_t e, void *cub3d)
 		cam_right(cub3d);
 	else if (e.key == MLX_KEY_SPACE)
 		move_action(cub3d);
+	render(cub3d);
 	minimap(cub3d);
 }
 

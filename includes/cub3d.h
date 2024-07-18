@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/18 10:10:10 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/18 12:05:42 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,21 @@
 # define MAP_EMPTY_COLOR 0x00000080
 # define TILE_SIZE 200
 
+typedef struct s_2dvector
+{
+	int	x;
+	int	y;
+}	t_2dvector;
+
+typedef struct s_2dvectorf
+{
+	double	x;
+	double	y;
+}	t_2dvectorf;
+
 typedef struct s_player
 {
-	int		x;
-	int		y;
+	t_2dvector	pos;
 	char	view;
 }	t_player;
 
@@ -59,10 +70,9 @@ typedef struct s_data
 
 typedef struct s_player_mlx
 {
-	int	x;
-	int	y;
-	int	cam_x;
-	int	cam_y;
+	t_2dvector	pos;
+	t_2dvector	dir;
+	t_2dvectorf	plane;
 }	t_player_mlx;
 
 typedef struct s_mlx
@@ -75,12 +85,24 @@ typedef struct s_mlx
 	t_player_mlx	player;
 }	t_mlx;
 
+typedef struct s_render
+{
+	t_2dvector	map;
+	t_2dvector	step;
+	t_2dvectorf	ray_dir;
+	t_2dvectorf	side_dist;
+	t_2dvectorf	delta_dist;
+	int			hit;
+	int			side;
+	double		perp_wall_dist;
+}	t_render;
+
 typedef struct s_cub3d
 {
-	void	*win;
-	t_data	data;
-	t_mlx	mlx;
-
+	void		*win;
+	t_data		data;
+	t_mlx		mlx;
+	t_render	render;
 }	t_cub3d;
 
 // Functions
@@ -120,6 +142,10 @@ void			test_print(t_data *data);
 
 unsigned int	read_colors(t_cub3d *cub3d, char **line);
 unsigned int	rgb_to_int(int red, int green, int blue);
+
+// Render
+
+void			render(t_cub3d *cub3d);
 
 // Controls
 

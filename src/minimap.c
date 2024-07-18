@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 17:57:44 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/16 15:07:30 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/18 12:08:39 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ static void	draw_player(t_cub3d *cub3d, double size)
 	int	x;
 	int	y;
 
-	player[0] = ((cub3d->mlx.player.y + 0.0) / TILE_SIZE) * size;
-	player[1] = ((cub3d->mlx.player.x + 0.0) / TILE_SIZE) * size;
+	player[0] = ((cub3d->mlx.player.pos.y + 0.0) / TILE_SIZE) * size;
+	player[1] = ((cub3d->mlx.player.pos.x + 0.0) / TILE_SIZE) * size;
 	y = player[0] - size / 4;
 	while (++y < player[0] + size / 4)
 	{

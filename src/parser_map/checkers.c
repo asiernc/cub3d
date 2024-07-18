@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:33:46 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/17 11:29:45 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/18 12:06:24 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,8 +127,8 @@ void	replace_player(t_cub3d *cub3d, char **map, int i[3], char player_view)
 			ft_put_error(cub3d, "Player in incorrect map position",
 				true);
 		check_in_cross(cub3d, cub3d->data.map, i[1], i[0]);
-		cub3d->data.player.x = i[1];
-		cub3d->data.player.y = i[0];
+		cub3d->data.player.pos.x = i[1];
+		cub3d->data.player.pos.y = i[0];
 		cub3d->data.player.view = player_view;
 		map[i[0]][i[1]] = '0';
 	}

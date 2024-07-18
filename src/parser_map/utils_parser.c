@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/18 10:07:25 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/18 12:06:53 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,6 @@ void	test_print(t_data *data)
 			i++;
 		}
 	}
-	printf("player {%d, %d}, View %c\n", data->player.x,
-		data->player.y, data->player.view);
+	printf("player {%d, %d}, View %c\n", data->player.pos.x,
+		data->player.pos.y, data->player.view);
 }
