@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:02:56 by asiercara         #+#    #+#             */
-/*   Updated: 2024/07/18 12:04:32 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/18 16:31:06 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ static void	ft_init_mlx(t_cub3d *cub3d)
 		ft_put_error(cub3d, "Error establishing a connection to the graphics system.",
 			true);
 	mlx_key_hook(cub3d->win, &on_key, (void *)cub3d);
+	cub3d->mlx.render_img = mlx_new_image(cub3d->win, WIDTH, HEIGHT);
+	if (!cub3d->mlx.render_img)
+		ft_put_error(cub3d, "MLX new image", false);
 }
 
 int	main(int argc, char **argv)
@@ -31,6 +34,7 @@ int	main(int argc, char **argv)
 	read_file(&cub3d, argv[1]);
 	init_game_struct(&cub3d);
 	ft_init_mlx(&cub3d);
+	init_minimap(&cub3d);
 	render(&cub3d);
 	minimap(&cub3d);
 	mlx_loop(cub3d.win);

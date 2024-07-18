@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/18 12:05:42 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/18 15:46:33 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@ typedef struct s_player_mlx
 
 typedef struct s_mlx
 {
+	mlx_image_t		*render_img;
 	mlx_image_t		*map_img;
+	double			map_size;
 	mlx_image_t		no_img;
 	mlx_image_t		ea_img;
 	mlx_image_t		so_img;
@@ -89,6 +91,7 @@ typedef struct s_render
 {
 	t_2dvector	map;
 	t_2dvector	step;
+	t_2dvectorf	player;
 	t_2dvectorf	ray_dir;
 	t_2dvectorf	side_dist;
 	t_2dvectorf	delta_dist;
@@ -169,6 +172,7 @@ void			ft_free_parser(t_cub3d *cub3d);
 void			ft_free_all(t_cub3d *cub3d);
 
 // MiniMap
+void			init_minimap(t_cub3d *cub3d);
 void			minimap(t_cub3d *cub3d);
 
 #endif
