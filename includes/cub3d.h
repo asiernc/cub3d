@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/18 15:46:33 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/18 20:11:48 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,11 @@
 # define HEIGHT 720
 # define MAP_X 5
 # define MAP_Y 4
-# define MAP_WALL_COLOR 0x00000080
-# define MAP_FLOOR_COLOR 0xFFFFFF80
-# define MAP_PLAYER_COLOR 0xFF000080
-# define MAP_EMPTY_COLOR 0x00000080
+# define MAP_WALL_COLOR 0x000000FF
+# define MAP_FLOOR_COLOR 0xFFFFFFFF
+# define MAP_PLAYER_COLOR 0xFF0000FF
+# define MAP_EMPTY_COLOR 0x00000000
+# define WALL_COLOR 0xFF0000FF
 # define TILE_SIZE 200
 
 typedef struct s_2dvector
@@ -110,13 +111,6 @@ typedef struct s_cub3d
 
 // Functions
 
-// GAME
-
-// Init
-
-void			init_game_struct(t_cub3d *cub3d);
-
-
 // Parser map
 
 void			read_file(t_cub3d *cub3d, char *file_path);
@@ -146,9 +140,15 @@ void			test_print(t_data *data);
 unsigned int	read_colors(t_cub3d *cub3d, char **line);
 unsigned int	rgb_to_int(int red, int green, int blue);
 
+// MLX
+
+void			init_game_struct(t_cub3d *cub3d);
+
 // Render
 
 void			render(t_cub3d *cub3d);
+void			fill_img(t_cub3d *cub3d);
+void			draw_line(t_cub3d *cub3d, int x, int draw[2], unsigned int color);
 
 // Controls
 

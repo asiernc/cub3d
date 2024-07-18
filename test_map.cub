@@ -4,8 +4,8 @@ SO    textures/wolfenstein/purple_stone.xpm textures/wolfenstein/grey_stone.xpm
 WE textures/wolfenstein/red_brick.xpm
 
 
-F  18,   53, 255
-C 13, 23, 23
+F 0, 0, 255
+C 0, 255, 0
 
 
 
