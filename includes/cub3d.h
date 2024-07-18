@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/16 16:25:20 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/18 10:10:10 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,13 @@ typedef struct s_cub3d
 
 // Functions
 
+// GAME
+
+// Init
+
+void			init_game_struct(t_cub3d *cub3d);
+
+
 // Parser map
 
 void			read_file(t_cub3d *cub3d, char *file_path);
@@ -96,6 +103,7 @@ void			fill_map(t_cub3d *cub3d, char *line, int i);
 
 // Utils parser
 
+void			init_parser_struct(t_data *data);
 void			remove_newline(char *line);
 int				ft_strlen_map(char *str);
 char			*clean_spaces_str(char *str);

@@ -6,7 +6,7 @@
 #    By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/03 20:31:11 by anovio-c          #+#    #+#              #
-#    Updated: 2024/07/16 15:06:13 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/07/18 09:59:27 by anovio-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ ifeq ($(UNAME_S), Linux)
 	MLXFLAGS		= -Ilibs/MLX42/include -ldl -lglfw -pthread -lm
 else ifeq ($(UNAME_S), Darwin)
 	MLXFLAGS	=  -I/opt/homebrew/include -L/opt/homebrew/lib -lglfw -framework Cocoa -framework OpenGL -framework IOKit 
-#MLXFLAGS	= -Ilibs/MLX42/include -framework Cocoa -framework OpenGL -framework IOKit -lglfw build/libmlx42.a
 else
     $(error Unsupported OS: $(UNAME_S))
 endif

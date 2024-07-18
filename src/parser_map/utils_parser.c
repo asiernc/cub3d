@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/16 16:13:25 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/18 10:07:25 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,22 @@ char	*clean_spaces_str(char *str)
 		i++;
 	}
 	return (res);
+}
+
+void	init_parser_struct(t_data *data)
+{
+	data->map = NULL;
+	data->height = 0;
+	data->width = 0;
+	data->no_path = NULL;
+	data->ea_path = NULL;
+	data->so_path = NULL;
+	data->we_path = NULL;
+	data->map_file_path = NULL;
+	data->ceil = 4294967295;
+	data->floor = 4294967295;
+	data->flag_map = 0;
+	data->flag_complete = 0;
 }
 
 void	test_print(t_data *data)
