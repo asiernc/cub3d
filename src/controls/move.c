@@ -6,30 +6,62 @@
 /*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 21:32:35 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/18 16:28:21 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/18 21:26:09 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	move_front(t_cub3d *cub3d)
+void	move_front(t_player_mlx *player, char **map)
 {
-	cub3d->mlx.player.pos.y -= TILE_SIZE / 4;
+	int	x;
+	int	y;
+
+	x = (player->pos.x + player->dir.x * MOVE_SPEED) / 200;
+	y = (player->pos.y + player->dir.y * MOVE_SPEED) / 200;
+	if (map[player->pos.y / 200][x] == '0')
+		player->pos.x += player->dir.x * MOVE_SPEED;
+	if (map[y][player->pos.x / 200] == '0')
+		player->pos.y += player->dir.y * MOVE_SPEED;
 }
 
-void	move_right(t_cub3d *cub3d)
+void	move_back(t_player_mlx *player, char **map)
 {
-	cub3d->mlx.player.pos.x += TILE_SIZE / 4;
+	int	x;
+	int	y;
+
+	x = (player->pos.x - player->dir.x * MOVE_SPEED) / 200;
+	y = (player->pos.y - player->dir.y * MOVE_SPEED) / 200;
+	if (map[player->pos.y / 200][x] == '0')
+		player->pos.x -= player->dir.x * MOVE_SPEED;
+	if (map[y][player->pos.x / 200] == '0')
+		player->pos.y -= player->dir.y * MOVE_SPEED;
 }
 
-void	move_back(t_cub3d *cub3d)
+void	move_right(t_player_mlx *player, char **map)
 {
-	cub3d->mlx.player.pos.y += TILE_SIZE / 4;
+	int	x;
+	int	y;
+
+	x = (player->pos.x - player->dir.y * MOVE_SPEED) / 200;
+	y = (player->pos.y - player->dir.x * MOVE_SPEED) / 200;
+	if (map[player->pos.y / 200][x] == '0')
+		player->pos.x -= player->dir.y * MOVE_SPEED;
+	if (map[y][player->pos.x / 200] == '0')
+		player->pos.y -= player->dir.x * MOVE_SPEED;
 }
 
-void	move_left(t_cub3d *cub3d)
+void	move_left(t_player_mlx *player, char **map)
 {
-	cub3d->mlx.player.pos.x -= TILE_SIZE / 4;
+	int	x;
+	int	y;
+
+	x = (player->pos.x + player->dir.y * MOVE_SPEED) / 200;
+	y = (player->pos.y + player->dir.x * MOVE_SPEED) / 200;
+	if (map[player->pos.y / 200][x] == '0')
+		player->pos.x += player->dir.y * MOVE_SPEED;
+	if (map[y][player->pos.x / 200] == '0')
+		player->pos.y += player->dir.x * MOVE_SPEED;
 }
 
 void	move_action(t_cub3d *cub3d)

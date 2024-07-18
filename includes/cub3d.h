@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/18 20:11:48 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/18 21:12:57 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,16 @@
 
 # define WIDTH 1280
 # define HEIGHT 720
+# define TILE_SIZE 200
+# define WALL_COLOR 0xFF0000FF
+# define MOVE_SPEED 10
+# define ROT_SPEED 0.1
 # define MAP_X 5
 # define MAP_Y 4
 # define MAP_WALL_COLOR 0x000000FF
 # define MAP_FLOOR_COLOR 0xFFFFFFFF
 # define MAP_PLAYER_COLOR 0xFF0000FF
 # define MAP_EMPTY_COLOR 0x00000000
-# define WALL_COLOR 0xFF0000FF
-# define TILE_SIZE 200
 
 typedef struct s_2dvector
 {
@@ -72,7 +74,7 @@ typedef struct s_data
 typedef struct s_player_mlx
 {
 	t_2dvector	pos;
-	t_2dvector	dir;
+	t_2dvectorf	dir;
 	t_2dvectorf	plane;
 }	t_player_mlx;
 
@@ -155,10 +157,10 @@ void			draw_line(t_cub3d *cub3d, int x, int draw[2], unsigned int color);
 void			on_key(mlx_key_data_t data, void *cub3d);
 int				on_close(t_cub3d *cub3d);
 
-void			move_front(t_cub3d *cub3d);
-void			move_right(t_cub3d *cub3d);
-void			move_back(t_cub3d *cub3d);
-void			move_left(t_cub3d *cub3d);
+void			move_front(t_player_mlx *player, char **map);
+void			move_right(t_player_mlx *player, char **map);
+void			move_left(t_player_mlx *player, char **map);
+void			move_back(t_player_mlx *player, char **map);
 void			move_action(t_cub3d *cub3d);
 
 void			cam_left(t_cub3d *cub3d);
