@@ -22,8 +22,6 @@ void	fill_colors(t_cub3d *cub3d, char **line)
 
 	if (!line || !line[0])
 		return ;
-	if (counter >= 2)
-		ft_put_error(cub3d, "Error. Duplicate color.", true);
 	if (!ft_strncmp(line[0], "F", 2))
 	{
 		cub3d->data.floor = read_colors(cub3d, line);
@@ -34,6 +32,8 @@ void	fill_colors(t_cub3d *cub3d, char **line)
 		cub3d->data.ceil = read_colors(cub3d, line);
 		counter++;
 	}
+	if (counter > 2)
+		ft_put_error(cub3d, "Error. Duplicate color.", true);
 }
 
 unsigned int	read_colors(t_cub3d *cub3d, char **line)
