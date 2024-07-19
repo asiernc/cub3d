@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 17:57:44 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/18 15:46:18 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/18 20:02:52 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	minimap(t_cub3d *cub3d)
 		ft_put_error(cub3d, "MLX image to win", false);
 }
 
-static double	get_size(t_cub3d *cub3d)
+void	init_minimap(t_cub3d *cub3d)
 {
 	double	size_x;
 	double	size_y;
@@ -82,17 +82,12 @@ static double	get_size(t_cub3d *cub3d)
 	size_x = (WIDTH + 0.0) / MAP_X / cub3d->data.width;
 	size_y = (HEIGHT + 0.0) / MAP_Y / cub3d->data.height;
 	if (size_x < size_y)
-		return (size_x);
-	return (size_y);
-}
-
-void	init_minimap(t_cub3d *cub3d)
-{
-	cub3d->mlx.map_size = get_size(cub3d);
+		cub3d->mlx.map_size = size_x;
+	else
+		cub3d->mlx.map_size = size_y;
 	cub3d->mlx.map_img = mlx_new_image(cub3d->win,
 			cub3d->mlx.map_size * cub3d->data.width,
 			cub3d->mlx.map_size * cub3d->data.height);
 	if (!cub3d->mlx.map_img)
 		ft_put_error(cub3d, "MLX new image", false);
 }
-

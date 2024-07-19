@@ -6,7 +6,7 @@
 #    By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/03 20:31:11 by anovio-c          #+#    #+#              #
-#    Updated: 2024/07/18 12:08:13 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/07/18 20:55:45 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ endif
 # Commands and flags
 CC          = gcc
 INCLUDE     = includes/cub3d.h libs/libft/libft.h
-CFLAGS      = -Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS      = -Wall -Wextra -Werror -MMD -g #-fsanitize=address
 RM          = rm -rf
 
 # Cub3d files
@@ -48,6 +48,7 @@ SRCS        =	main.c 						\
 				controls/move.c				\
 				controls/cam.c				\
 				render/init.c				\
+				render/draw.c				\
 				render/render.c				\
 				minimap.c					\
 				handle_errors.c

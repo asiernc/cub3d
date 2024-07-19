@@ -6,26 +6,29 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 20:59:20 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/18 16:00:12 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/18 21:13:25 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	on_key(mlx_key_data_t e, void *cub3d)
+void	on_key(mlx_key_data_t e, void *data)
 {
+	t_cub3d	*cub3d;
+
+	cub3d = data;
 	if (!e.action)
 		return ;
 	else if (e.key == MLX_KEY_ESCAPE)
 		on_close(cub3d);
 	else if (e.key == MLX_KEY_W)
-		move_front(cub3d);
+		move_front(&cub3d->mlx.player, cub3d->data.map);
 	else if (e.key == MLX_KEY_D)
-		move_right(cub3d);
+		move_right(&cub3d->mlx.player, cub3d->data.map);
 	else if (e.key == MLX_KEY_S)
-		move_back(cub3d);
+		move_back(&cub3d->mlx.player, cub3d->data.map);
 	else if (e.key == MLX_KEY_A)
-		move_left(cub3d);
+		move_left(&cub3d->mlx.player, cub3d->data.map);
 	else if (e.key == MLX_KEY_LEFT)
 		cam_left(cub3d);
 	else if (e.key == MLX_KEY_RIGHT)
