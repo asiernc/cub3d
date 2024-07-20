@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/18 21:12:57 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/20 14:01:18 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define TILE_SIZE 200
 # define WALL_COLOR 0xFF0000FF
 # define MOVE_SPEED 10
-# define ROT_SPEED 0.1
+# define ROT_SPEED 0.08
 # define MAP_X 5
 # define MAP_Y 4
 # define MAP_WALL_COLOR 0x000000FF

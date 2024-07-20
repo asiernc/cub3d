@@ -113,8 +113,8 @@ void	render(t_cub3d *cub3d)
 	int	x;
 
 	fill_img(cub3d);
-	cub3d->render.player.x = cub3d->mlx.player.pos.x / 200.0;
-	cub3d->render.player.y = cub3d->mlx.player.pos.y / 200.0;
+	cub3d->render.player.x = cub3d->mlx.player.pos.x / (double)TILE_SIZE;
+	cub3d->render.player.y = cub3d->mlx.player.pos.y / (double)TILE_SIZE;
 	x = -1;
 	while (++x < WIDTH)
 	{
