@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 17:57:44 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/18 20:02:52 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/20 17:11:25 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,7 @@ static void	draw_player(t_cub3d *cub3d)
 	{
 		x = player[1] - cub3d->mlx.map_size / 4;
 		while (++x < player[1] + cub3d->mlx.map_size / 4)
-		{
-			if (x < 0 || y < 0)
-				continue ;
 			mlx_put_pixel(cub3d->mlx.map_img, x, y, MAP_PLAYER_COLOR);
-		}
 	}
 }
 

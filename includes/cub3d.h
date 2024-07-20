@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/20 14:01:18 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/20 17:57:39 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,15 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include <sys/time.h>
 # include "../libs/MLX42/include/MLX42/MLX42.h"
 
 # define WIDTH 1280
 # define HEIGHT 720
-# define TILE_SIZE 200
+# define TILE_SIZE 100
 # define WALL_COLOR 0xFF0000FF
-# define MOVE_SPEED 10
-# define ROT_SPEED 0.08
+# define MOVE_SPEED 5
+# define ROT_SPEED 0.1
 # define MAP_X 5
 # define MAP_Y 4
 # define MAP_WALL_COLOR 0x000000FF
@@ -88,6 +89,7 @@ typedef struct s_mlx
 	mlx_image_t		so_img;
 	mlx_image_t		we_img;
 	t_player_mlx	player;
+	int				mouse_x;
 }	t_mlx;
 
 typedef struct s_render
@@ -105,6 +107,7 @@ typedef struct s_render
 
 typedef struct s_cub3d
 {
+	long		time;
 	void		*win;
 	t_data		data;
 	t_mlx		mlx;
@@ -155,7 +158,10 @@ void			draw_line(t_cub3d *cub3d, int x, int draw[2], unsigned int color);
 // Controls
 
 void			on_key(mlx_key_data_t data, void *cub3d);
+void			on_mouse_key(mouse_key_t button, action_t action, modifier_key_t mods, void* cub3d);
+void			on_mouse_move(double x, double y, void* cub3d);
 int				on_close(t_cub3d *cub3d);
+void			on_frame(void *cub3d);
 
 void			move_front(t_player_mlx *player, char **map);
 void			move_right(t_player_mlx *player, char **map);
@@ -165,6 +171,7 @@ void			move_action(t_cub3d *cub3d);
 
 void			cam_left(t_cub3d *cub3d);
 void			cam_right(t_cub3d *cub3d);
+void			cam_mouse(t_cub3d *cub3d, int x);
 
 // Handle errors
 void			ft_put_error(t_cub3d *cub3d, const char *err_msg, bool flag);
