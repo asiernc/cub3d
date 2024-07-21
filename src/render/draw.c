@@ -12,6 +12,12 @@
 
 #include "../../includes/cub3d.h"
 
+/*uint32_t	get_color_from_texture(t_cub3d *cub3d, int tex_x,
+			int tex_y, int orientation)
+{
+	return (cub3d->mlx.img_arr[orientation][tex_y][tex_x]);
+}*/
+
 void	fill_img(t_cub3d *cub3d)
 {
 	int	x;

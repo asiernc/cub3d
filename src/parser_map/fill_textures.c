@@ -37,7 +37,7 @@ static void	check_fill_textures(t_cub3d *cub3d, char **key, char *value)
 {
 	if (*key)
 		ft_put_error(cub3d, "Error. Duplicate same texture.", true);
-	if (!ft_strnstr_end(value, ".xpm"))
+	if (!ft_strnstr_end(value, ".xpm42"))
 		ft_put_error(cub3d, "Error. Texture file type is not .xpm", true);
 	*key = ft_strdup(value);
 }

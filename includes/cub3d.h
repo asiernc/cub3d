@@ -33,7 +33,15 @@
 # define MAP_WALL_COLOR 0x000000FF
 # define MAP_FLOOR_COLOR 0xFFFFFFFF
 # define MAP_PLAYER_COLOR 0xFF0000FF
-# define MAP_EMPTY_COLOR 0x00000000
+# define MAP_EMPTY_COLOR 0x0000000
+
+enum	e_orientation
+{
+	NORTH = 0,
+	SOUTH,
+	WEST,
+	EAST,
+};
 
 typedef struct s_2dvector
 {
@@ -50,7 +58,7 @@ typedef struct s_2dvectorf
 typedef struct s_player
 {
 	t_2dvector	pos;
-	char	view;
+	char		view;
 }	t_player;
 
 typedef struct s_data
@@ -83,6 +91,7 @@ typedef struct s_mlx
 	mlx_image_t		*render_img;
 	mlx_image_t		*map_img;
 	double			map_size;
+	uint32_t		**img_arr[4];
 	mlx_image_t		no_img;
 	mlx_image_t		ea_img;
 	mlx_image_t		so_img;
@@ -101,6 +110,7 @@ typedef struct s_render
 	int			hit;
 	int			side;
 	double		perp_wall_dist;
+	int			orientation;
 }	t_render;
 
 typedef struct s_cub3d
@@ -145,12 +155,17 @@ unsigned int	rgb_to_int(int red, int green, int blue);
 // MLX
 
 void			init_game_struct(t_cub3d *cub3d);
+int				load_texture(t_cub3d *cub3d);
 
 // Render
 
 void			render(t_cub3d *cub3d);
 void			fill_img(t_cub3d *cub3d);
-void			draw_line(t_cub3d *cub3d, int x, int draw[2], unsigned int color);
+int				set_orientation(t_cub3d *cub3d);
+void			draw_line(t_cub3d *cub3d, int x, int draw[2],
+					unsigned int color);
+uint32_t		get_color_from_texture(t_cub3d *cub3d, int tex_x,
+					int tex_y, int orientation);
 
 // Controls
 
@@ -172,6 +187,7 @@ void			ft_put_error(t_cub3d *cub3d, const char *err_msg, bool flag);
 // Free
 void			ft_free_parser(t_cub3d *cub3d);
 void			ft_free_all(t_cub3d *cub3d);
+void			free_textures(t_cub3d *cub3d);
 
 // MiniMap
 void			init_minimap(t_cub3d *cub3d);

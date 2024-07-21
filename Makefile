@@ -50,6 +50,7 @@ SRCS        =	main.c 						\
 				render/init.c				\
 				render/draw.c				\
 				render/render.c				\
+				render/textures.c 			\
 				minimap.c					\
 				handle_errors.c
 

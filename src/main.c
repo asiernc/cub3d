@@ -34,6 +34,7 @@ int	main(int argc, char **argv)
 	read_file(&cub3d, argv[1]);
 	init_game_struct(&cub3d);
 	ft_init_mlx(&cub3d);
+	load_texture(&cub3d);
 	init_minimap(&cub3d);
 	render(&cub3d);
 	minimap(&cub3d);

@@ -47,3 +47,11 @@ void	ft_free_all(t_cub3d *cub3d)
 {
 	(void)cub3d;
 }
+
+void	free_textures(t_cub3d *cub3d)
+{
+	free(cub3d->data.no_path);
+	free(cub3d->data.so_path);
+	free(cub3d->data.ea_path);
+	free(cub3d->data.we_path);
+}
