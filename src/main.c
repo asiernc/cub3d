@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:02:56 by asiercara         #+#    #+#             */
-/*   Updated: 2024/07/20 17:40:12 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/21 16:27:07 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	ft_init_mlx(t_cub3d *cub3d)
 	mlx_key_hook(cub3d->win, &on_key, (void *)cub3d);
 	mlx_mouse_hook(cub3d->win, &on_mouse_key, (void *)cub3d);
 	mlx_cursor_hook(cub3d->win, &on_mouse_move, (void *)cub3d);
-	mlx_loop_hook(cub3d->win, &on_frame, (void*)cub3d);
+	mlx_loop_hook(cub3d->win, &on_frame, (void *)cub3d);
 	cub3d->mlx.render_img = mlx_new_image(cub3d->win, WIDTH, HEIGHT);
 	if (!cub3d->mlx.render_img)
 		ft_put_error(cub3d, "MLX new image", false);

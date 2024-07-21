@@ -6,7 +6,7 @@
 /*   By: molasz-a <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 11:01:11 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/18 20:56:29 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/21 16:28:01 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,6 @@ void	render(t_cub3d *cub3d)
 {
 	int	x;
 
-	fill_img(cub3d);
 	cub3d->render.player.x = cub3d->mlx.player.pos.x / (double)TILE_SIZE;
 	cub3d->render.player.y = cub3d->mlx.player.pos.y / (double)TILE_SIZE;
 	x = -1;

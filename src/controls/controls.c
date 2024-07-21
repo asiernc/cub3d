@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 20:59:20 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/20 17:51:09 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/21 16:27:42 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,36 +30,30 @@ void	on_key(mlx_key_data_t e, void *data)
 	else if (e.key == MLX_KEY_A)
 		move_left(&cub3d->mlx.player, cub3d->data.map);
 	else if (e.key == MLX_KEY_LEFT)
-		cam_left(cub3d);
+		cam_left(cub3d, KEY_ROT_SPEED);
 	else if (e.key == MLX_KEY_RIGHT)
-		cam_right(cub3d);
+		cam_right(cub3d, KEY_ROT_SPEED);
 	else if (e.key == MLX_KEY_SPACE)
 		move_action(cub3d);
-	render(cub3d);
-	minimap(cub3d);
 }
 
-void	on_mouse_key(mouse_key_t button, action_t action, modifier_key_t mods, void* cub3d)
+void	on_mouse_key(mouse_key_t button, action_t action, modifier_key_t mods,
+		void	*cub3d)
 {
 	(void) mods;
 	if (!action)
 		return ;
 	if (button == MLX_MOUSE_BUTTON_LEFT)
-		cam_left(cub3d);
+		cam_left(cub3d, KEY_ROT_SPEED);
 	else if (button == MLX_MOUSE_BUTTON_RIGHT)
-		cam_right(cub3d);
-	render(cub3d);
-	minimap(cub3d);
+		cam_right(cub3d, KEY_ROT_SPEED);
 }
 
 void	on_mouse_move(double x, double y, void *cub3d)
 {
-	return ; //TODO
 	(void)cub3d;
 	(void)y;
 	cam_mouse(cub3d, x);
-	render(cub3d);
-	minimap(cub3d);
 }
 
 int	on_close(t_cub3d *cub3d)
@@ -76,6 +70,8 @@ void	on_frame(void *data)
 	long			time;
 
 	cub3d = data;
+	minimap(cub3d);
+	render(cub3d);
 	gettimeofday(&tv, NULL);
 	time = tv.tv_sec * 1000 + tv.tv_usec / 1000;
 	printf("FPS: %ld\n", 1000 / (time - cub3d->time));

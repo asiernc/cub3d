@@ -6,63 +6,52 @@
 /*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 21:32:42 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/20 17:57:07 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/21 16:24:21 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 #include <math.h>
 
-void	cam_right(t_cub3d *cub3d)
+void	cam_right(t_cub3d *cub3d, double rot_speed)
 {
 	double	dir_x;
 	double	plane_x;
 
 	dir_x = cub3d->mlx.player.dir.x;
-	cub3d->mlx.player.dir.x = dir_x * cos(ROT_SPEED) - cub3d->mlx.player.dir.y
-		* sin(ROT_SPEED);
-	cub3d->mlx.player.dir.y = dir_x * sin(ROT_SPEED) + cub3d->mlx.player.dir.y
-		* cos(ROT_SPEED);
+	cub3d->mlx.player.dir.x = dir_x * cos(rot_speed) - cub3d->mlx.player.dir.y
+		* sin(rot_speed);
+	cub3d->mlx.player.dir.y = dir_x * sin(rot_speed) + cub3d->mlx.player.dir.y
+		* cos(rot_speed);
 	plane_x = cub3d->mlx.player.plane.x;
-	cub3d->mlx.player.plane.x = plane_x * cos(ROT_SPEED)
-		- cub3d->mlx.player.plane.y * sin(ROT_SPEED);
-	cub3d->mlx.player.plane.y = plane_x * sin(ROT_SPEED)
-		+ cub3d->mlx.player.plane.y * cos(ROT_SPEED);
+	cub3d->mlx.player.plane.x = plane_x * cos(rot_speed)
+		- cub3d->mlx.player.plane.y * sin(rot_speed);
+	cub3d->mlx.player.plane.y = plane_x * sin(rot_speed)
+		+ cub3d->mlx.player.plane.y * cos(rot_speed);
 }
 
-void	cam_left(t_cub3d *cub3d)
+void	cam_left(t_cub3d *cub3d, double rot_speed)
 {
 	double	dir_x;
 	double	plane_x;
 
 	dir_x = cub3d->mlx.player.dir.x;
-	cub3d->mlx.player.dir.x = dir_x * cos(-ROT_SPEED) - cub3d->mlx.player.dir.y
-		* sin(-ROT_SPEED);
-	cub3d->mlx.player.dir.y = dir_x * sin(-ROT_SPEED) + cub3d->mlx.player.dir.y
-		* cos(-ROT_SPEED);
+	cub3d->mlx.player.dir.x = dir_x * cos(-rot_speed) - cub3d->mlx.player.dir.y
+		* sin(-rot_speed);
+	cub3d->mlx.player.dir.y = dir_x * sin(-rot_speed) + cub3d->mlx.player.dir.y
+		* cos(-rot_speed);
 	plane_x = cub3d->mlx.player.plane.x;
-	cub3d->mlx.player.plane.x = plane_x * cos(-ROT_SPEED)
-		- cub3d->mlx.player.plane.y * sin(-ROT_SPEED);
-	cub3d->mlx.player.plane.y = plane_x * sin(-ROT_SPEED)
-		+ cub3d->mlx.player.plane.y * cos(-ROT_SPEED);
+	cub3d->mlx.player.plane.x = plane_x * cos(-rot_speed)
+		- cub3d->mlx.player.plane.y * sin(-rot_speed);
+	cub3d->mlx.player.plane.y = plane_x * sin(-rot_speed)
+		+ cub3d->mlx.player.plane.y * cos(-rot_speed);
 }
 
 void	cam_mouse(t_cub3d *cub3d, int x)
 {
-	double	dir_x;
-	double	plane_x;
-	int		diff_x;
-
-	return ;
-	diff_x = x * 360 / (double)WIDTH * 0.01;
-	dir_x = cub3d->mlx.player.dir.x;
-	cub3d->mlx.player.dir.x = dir_x * cos(ROT_SPEED * diff_x) - cub3d->mlx.player.dir.y
-		* sin(ROT_SPEED * diff_x);
-	cub3d->mlx.player.dir.y = dir_x * sin(ROT_SPEED * diff_x) + cub3d->mlx.player.dir.y
-		* cos(ROT_SPEED * diff_x);
-	plane_x = cub3d->mlx.player.plane.x;
-	cub3d->mlx.player.plane.x = plane_x * cos(ROT_SPEED * diff_x)
-		- cub3d->mlx.player.plane.y * sin(ROT_SPEED * diff_x);
-	cub3d->mlx.player.plane.y = plane_x * sin(ROT_SPEED * diff_x)
-		+ cub3d->mlx.player.plane.y * cos(ROT_SPEED * diff_x);
+	if (x - cub3d->mlx.mouse_x < 0)
+		cam_left(cub3d, MOUSE_ROT_SPEED);
+	else
+		cam_right(cub3d, MOUSE_ROT_SPEED);
+	cub3d->mlx.mouse_x = x;
 }
