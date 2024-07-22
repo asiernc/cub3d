@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_textures.c                                    :+:      :+:    :+:   */
+/*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/17 09:57:49 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/22 16:10:04 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,14 @@ static uint32_t	get_color(mlx_image_t *img, int x, int y)
 	uint8_t		r;
 	uint8_t		g;
 	uint8_t		b;
-	//uint8_t		a;
+	uint8_t		a;
 
 
 	r = img->pixels[(y * img->width + x) * 4];
 	g = img->pixels[(y * img->width + x) * 4 + 1];
 	b = img->pixels[(y * img->width + x) * 4 + 2];
-	/*a = 0xFF
-	if (img->pixels[(y * img->width + x) * 4 + 3])
-		a = img->pixels[(y * img->width + x) * 4 + 3];*/
-	color = (r << 24) | (g << 16) | (b << 8) | 0xFF;
+	a = img->pixels[(y * img->width + x) * 4 + 3];
+	color = (r << 24) | (g << 16) | (b << 8) | a;
 	return (color);
 }
 
@@ -59,30 +57,21 @@ static void	convert_to_array(t_cub3d *cub3d, mlx_image_t *tmp_img,
 	y = -1;
 	(*img_arr) = malloc(65 * sizeof(uint32_t *));
 	if (!*img_arr)
-		printf("allocation error");
-		//ft_put_error &&free render?¿
+		ft_put_error(cub3d, "Allocation error", true);
 	while (++y < 65)
 	{
 		x = -1;
 		(*img_arr)[y] = malloc(65 * sizeof(uint32_t));
 		if (!(*img_arr)[y])
-			printf("allocation error");
-			//ft_put error && free render?¿
+			ft_put_error(cub3d, "Allocation error", true);
 		while (++x < 65)
-		{
 			(*img_arr)[y][x] = get_color(tmp_img, x, y);
-			//x++;
-		}
-		printf("color of {%d,%d} is %u\n", 0, y, (*img_arr)[y][0]);
 	}
 	if (tmp_img)
 		mlx_delete_image(cub3d->win, tmp_img);
 }
-//copy_texture_from_img_to_array(img, &config->img_tab[i], mlx, 64);
 
-// xpm_t* mlx_load_xpm42(const char* path);
-
-int	load_texture(t_cub3d *cub3d)
+void	load_texture(t_cub3d *cub3d)
 {
 	int			i;
 	xpm_t		*xpm;
@@ -102,10 +91,9 @@ int	load_texture(t_cub3d *cub3d)
 		if (xpm)
 			tmp_img = mlx_texture_to_image(cub3d->win, &xpm->texture);
 		else
-			return (0);
+			ft_put_error(cub3d, "Load xpm error", true);
 		convert_to_array(cub3d, tmp_img, &cub3d->mlx.img_arr[i]);
 		i++;
 	}
-	//free_textures(cub3d);
-	return (1);
+	free_textures(cub3d);
 }

@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/20 14:01:18 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/22 16:14:48 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 
 enum	e_orientation
 {
-	NORTH = 0,
+	NORTH,
 	SOUTH,
 	WEST,
 	EAST,
@@ -146,16 +146,20 @@ void			check_player(t_cub3d *cub3d);
 int				check_all_data(t_cub3d *cub3d);
 char			*prepare_line(t_cub3d *cub3d, char *str);
 void			test_print(t_data *data);
-
-// Color utils
-
 unsigned int	read_colors(t_cub3d *cub3d, char **line);
 unsigned int	rgb_to_int(int red, int green, int blue);
 
 // MLX
 
 void			init_game_struct(t_cub3d *cub3d);
-int				load_texture(t_cub3d *cub3d);
+void			load_texture(t_cub3d *cub3d);
+uint32_t		get_color_from_texture(t_cub3d *cub3d, int tex_x,
+					int tex_y, int orientation);
+
+// MiniMap
+
+void			init_minimap(t_cub3d *cub3d);
+void			minimap(t_cub3d *cub3d);
 
 // Render
 
@@ -164,8 +168,6 @@ void			fill_img(t_cub3d *cub3d);
 int				set_orientation(t_cub3d *cub3d);
 void			draw_line(t_cub3d *cub3d, int x, int draw[2],
 					unsigned int color);
-uint32_t		get_color_from_texture(t_cub3d *cub3d, int tex_x,
-					int tex_y, int orientation);
 
 // Controls
 
@@ -188,9 +190,5 @@ void			ft_put_error(t_cub3d *cub3d, const char *err_msg, bool flag);
 void			ft_free_parser(t_cub3d *cub3d);
 void			ft_free_all(t_cub3d *cub3d);
 void			free_textures(t_cub3d *cub3d);
-
-// MiniMap
-void			init_minimap(t_cub3d *cub3d);
-void			minimap(t_cub3d *cub3d);
 
 #endif
