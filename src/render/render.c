@@ -91,9 +91,9 @@ static void	dda(t_cub3d *cub3d)
 
 static void	set_draw_values(t_cub3d *cub3d, int x)
 {
-	int				line_heigth;
-	int				draw[2];
 	unsigned int	color;
+	int				line_heigth;
+	int				draw[2];//drawStart and drawEnd
 
 	line_heigth = (int)(HEIGHT / cub3d->render.perp_wall_dist);
 	draw[0] = -line_heigth / 2 + HEIGHT / 2;
@@ -105,6 +105,7 @@ static void	set_draw_values(t_cub3d *cub3d, int x)
 	color = WALL_COLOR;
 	if (cub3d->render.side)
 		color /= 2;
+	cub3d->render.orientation = set_orientation(cub3d);
 	draw_line(cub3d, x, draw, color);
 }
 

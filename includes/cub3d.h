@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/22 15:27:02 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/22 16:18:55 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,15 @@
 # define MAP_WALL_COLOR 0x000000FF
 # define MAP_FLOOR_COLOR 0xFFFFFFFF
 # define MAP_PLAYER_COLOR 0xFF0000FF
-# define MAP_EMPTY_COLOR 0x00000000
+# define MAP_EMPTY_COLOR 0x0000000
+
+enum	e_orientation
+{
+	NORTH,
+	SOUTH,
+	WEST,
+	EAST,
+};
 
 typedef struct s_2dvector
 {
@@ -52,7 +60,7 @@ typedef struct s_2dvectorf
 typedef struct s_player
 {
 	t_2dvector	pos;
-	char	view;
+	char		view;
 }	t_player;
 
 typedef struct s_data
@@ -85,6 +93,7 @@ typedef struct s_mlx
 	mlx_image_t		*render_img;
 	mlx_image_t		*map_img;
 	double			map_size;
+	uint32_t		**img_arr[4];
 	mlx_image_t		no_img;
 	mlx_image_t		ea_img;
 	mlx_image_t		so_img;
@@ -104,6 +113,7 @@ typedef struct s_render
 	int			hit;
 	int			side;
 	double		perp_wall_dist;
+	int			orientation;
 }	t_render;
 
 typedef struct s_cub3d
@@ -140,26 +150,34 @@ void			check_player(t_cub3d *cub3d);
 int				check_all_data(t_cub3d *cub3d);
 char			*prepare_line(t_cub3d *cub3d, char *str);
 void			test_print(t_data *data);
-
-// Color utils
-
 unsigned int	read_colors(t_cub3d *cub3d, char **line);
 unsigned int	rgb_to_int(int red, int green, int blue);
 
 // MLX
 
 void			init_game_struct(t_cub3d *cub3d);
+void			load_texture(t_cub3d *cub3d);
+uint32_t		get_color_from_texture(t_cub3d *cub3d, int tex_x,
+					int tex_y, int orientation);
+
+// MiniMap
+
+void			init_minimap(t_cub3d *cub3d);
+void			minimap(t_cub3d *cub3d);
 
 // Render
 
 void			render(t_cub3d *cub3d);
-void			draw_line(t_cub3d *cub3d, int x, int draw[2], unsigned int color);
+int				set_orientation(t_cub3d *cub3d);
+void			draw_line(t_cub3d *cub3d, int x, int draw[2],
+					unsigned int color);
 
 // Controls
 
 void			on_key(mlx_key_data_t data, void *cub3d);
-void			on_mouse_key(mouse_key_t button, action_t action, modifier_key_t mods, void* cub3d);
-void			on_mouse_move(double x, double y, void* cub3d);
+void			on_mouse_key(mouse_key_t button, action_t action,
+					modifier_key_t mods, void *cub3d);
+void			on_mouse_move(double x, double y, void *cub3d);
 int				on_close(t_cub3d *cub3d);
 void			on_frame(void *cub3d);
 
@@ -179,9 +197,6 @@ void			ft_put_error(t_cub3d *cub3d, const char *err_msg, bool flag);
 // Free
 void			ft_free_parser(t_cub3d *cub3d);
 void			ft_free_all(t_cub3d *cub3d);
-
-// MiniMap
-void			init_minimap(t_cub3d *cub3d);
-void			minimap(t_cub3d *cub3d);
+void			free_textures(t_cub3d *cub3d);
 
 #endif
