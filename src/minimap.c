@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 17:57:44 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/20 17:11:25 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/22 11:46:09 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,12 @@ static int	get_color(t_cub3d *cub3d, int map_x, int map_y)
 {
 	int	x;
 	int	y;
-	int	tile;
 
 	x = map_x / ((cub3d->mlx.map_img->width + 0.0) / cub3d->data.width);
 	y = map_y / ((cub3d->mlx.map_img->height + 0.0) / cub3d->data.height);
-	tile = cub3d->data.map[y][x];
-	if (tile == '1')
+	if (cub3d->data.map[y][x] == '1')
 		return (MAP_WALL_COLOR);
-	if (tile == '0')
+	if (cub3d->data.map[y][x] == '0')
 		return (MAP_FLOOR_COLOR);
 	return (MAP_EMPTY_COLOR);
 }

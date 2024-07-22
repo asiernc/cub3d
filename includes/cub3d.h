@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/21 16:26:10 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/21 16:30:22 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define WALL_COLOR 0xFF0000FF
 # define MOVE_SPEED 5
 # define KEY_ROT_SPEED 0.1
-# define MOUSE_ROT_SPEED 0.005
+# define MOUSE_ROT_SPEED 0.01
 # define MAP_X 5
 # define MAP_Y 4
 # define MAP_WALL_COLOR 0x000000FF

@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 21:32:42 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/21 16:24:21 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/22 11:54:33 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	cam_left(t_cub3d *cub3d, double rot_speed)
 
 void	cam_mouse(t_cub3d *cub3d, int x)
 {
-	if (x - cub3d->mlx.mouse_x < 0)
+	if (cub3d->mlx.mouse_x >= 0 && x - cub3d->mlx.mouse_x < 0)
 		cam_left(cub3d, MOUSE_ROT_SPEED);
 	else
 		cam_right(cub3d, MOUSE_ROT_SPEED);

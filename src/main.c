@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:02:56 by asiercara         #+#    #+#             */
-/*   Updated: 2024/07/21 16:27:07 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/22 12:03:06 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	main(int argc, char **argv)
 {
 	t_cub3d	cub3d;
 
+	cub3d.time = -1;
+	cub3d.mlx.mouse_x = -1;
 	if (argc != 2)
 		ft_put_error(NULL, "Wrong arguments", true);
 	init_parser_struct(&cub3d.data);
@@ -38,8 +40,6 @@ int	main(int argc, char **argv)
 	init_game_struct(&cub3d);
 	ft_init_mlx(&cub3d);
 	init_minimap(&cub3d);
-	render(&cub3d);
-	minimap(&cub3d);
 	mlx_loop(cub3d.win);
 	mlx_terminate(cub3d.win);
 	return (0);

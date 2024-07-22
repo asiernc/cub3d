@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 20:59:20 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/21 16:27:42 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/22 12:02:57 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,9 @@ void	on_frame(void *data)
 	render(cub3d);
 	gettimeofday(&tv, NULL);
 	time = tv.tv_sec * 1000 + tv.tv_usec / 1000;
-	printf("FPS: %ld\n", 1000 / (time - cub3d->time));
+	if (cub3d->time >= 0)
+	{
+		printf("FPS: %ld\n", 1000 / (time - cub3d->time));
+	}
 	cub3d->time = time;
 }
