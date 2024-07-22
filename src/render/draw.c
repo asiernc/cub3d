@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 20:06:28 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/22 18:10:18 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/22 18:32:10 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	draw_line(t_cub3d *cub3d, int x)
 	double		tex_pos;
 	int			tex_y;
 
-	step = 1.0 * TEX_WIDTH * cub3d->render.line_height;
+	step = 1.0 * TEX_WIDTH / cub3d->render.line_height;
 	tex_pos = (cub3d->render.draw_start - HEIGHT / 2
 			+ cub3d->render.line_height / 2) * step;
 	y = 0;

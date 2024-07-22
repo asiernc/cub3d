@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 11:01:11 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/22 18:10:13 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/22 18:37:16 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ static void	calc_texture(t_cub3d *cub3d)
 		wall_x = cub3d->mlx.player.pos.x + cub3d->render.perp_wall_dist
 			* cub3d->render.ray_dir.x;
 	wall_x -= floor(wall_x);
-	cub3d->render.tex_x = (int)(wall_x * (double)TEX_WIDTH);
+	cub3d->render.tex_x = (int)(wall_x * TEX_WIDTH);
 	if ((cub3d->render.side == 0 && cub3d->render.ray_dir.x > 0)
 		|| (cub3d->render.side == 1 && cub3d->render.ray_dir.y < 0))
 		cub3d->render.tex_x = TEX_WIDTH - cub3d->render.tex_x - 1;
