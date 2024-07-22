@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 20:59:20 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/22 15:24:00 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/22 16:21:19 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,20 +62,8 @@ int	on_close(t_cub3d *cub3d)
 	return (0);
 }
 
-void	on_frame(void *data)
+void	on_frame(void *cub3d)
 {
-	t_cub3d			*cub3d;
-	//double			time;
-
-	cub3d = data;
 	minimap(cub3d);
 	render(cub3d);
-	/*
-	time = mlx_get_time() / 1000;
-	if (cub3d->time >= 0)
-	{
-		printf("FPS: %f\n", 1000 / (time - cub3d->time));
-	}
-	cub3d->time = time;
-	*/
 }

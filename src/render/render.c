@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: molasz-a <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 11:01:11 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/21 16:28:01 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/22 16:32:07 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static void	set_draw_values(t_cub3d *cub3d, int x)
 {
 	unsigned int	color;
 	int				line_heigth;
-	int				draw[2];//drawStart and drawEnd
+	int				draw[2];
 
 	line_heigth = (int)(HEIGHT / cub3d->render.perp_wall_dist);
 	draw[0] = -line_heigth / 2 + HEIGHT / 2;

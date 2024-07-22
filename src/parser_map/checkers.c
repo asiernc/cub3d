@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:33:46 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/18 12:06:24 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/22 16:31:10 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,11 @@ void	check_inside_map(t_cub3d *cub3d)
 	int		j;
 
 	map = cub3d->data.map;
-	i = 0;
-	while (map[i])
+	i = -1;
+	while (map[++i])
 	{
-		j = 0;
-		while (map[i][j])
+		j = -1;
+		while (map[i][++j])
 		{
 			if (map[i][j] == '0')
 			{
@@ -68,13 +68,11 @@ void	check_inside_map(t_cub3d *cub3d)
 					(i > 0 && map[i - 1][j] == ' ') ||
 					(map[i + 1] && map[i + 1][j] == ' '))
 				{
-					fprintf(stderr, "In {%d, %d} the '0' has not been correctly closed.\n", j, i);
+					fprintf(stderr, "Map not closed on {%d, %d}.\n", j, i);
 					ft_put_error(cub3d, "Map error.", true);
 				}
 			}
-			j++;
 		}
-		i++;
 	}
 }
 
@@ -135,8 +133,6 @@ void	replace_player(t_cub3d *cub3d, char **map, int i[3], char player_view)
 	else
 		return ;
 }
-
- // i[0] == i || y; i[1] == j || x; i[2] == counter;
 
 void	check_player(t_cub3d *cub3d)
 {

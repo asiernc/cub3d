@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/22 16:10:04 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/22 16:32:21 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static uint32_t	get_color(mlx_image_t *img, int x, int y)
 	uint8_t		b;
 	uint8_t		a;
 
-
 	r = img->pixels[(y * img->width + x) * 4];
 	g = img->pixels[(y * img->width + x) * 4 + 1];
 	b = img->pixels[(y * img->width + x) * 4 + 2];
@@ -57,13 +56,13 @@ static void	convert_to_array(t_cub3d *cub3d, mlx_image_t *tmp_img,
 	y = -1;
 	(*img_arr) = malloc(65 * sizeof(uint32_t *));
 	if (!*img_arr)
-		ft_put_error(cub3d, "Allocation error", true);
+		ft_put_error(cub3d, "Malloc error on texture array", false);
 	while (++y < 65)
 	{
 		x = -1;
 		(*img_arr)[y] = malloc(65 * sizeof(uint32_t));
 		if (!(*img_arr)[y])
-			ft_put_error(cub3d, "Allocation error", true);
+			ft_put_error(cub3d, "Malloc error on texture array", false);
 		while (++x < 65)
 			(*img_arr)[y][x] = get_color(tmp_img, x, y);
 	}
