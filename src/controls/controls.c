@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 20:59:20 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/22 12:02:57 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/22 15:24:00 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	on_mouse_key(mouse_key_t button, action_t action, modifier_key_t mods,
 
 void	on_mouse_move(double x, double y, void *cub3d)
 {
-	(void)cub3d;
 	(void)y;
 	cam_mouse(cub3d, x);
 }
@@ -65,18 +64,18 @@ int	on_close(t_cub3d *cub3d)
 
 void	on_frame(void *data)
 {
-	struct timeval	tv;
 	t_cub3d			*cub3d;
-	long			time;
+	//double			time;
 
 	cub3d = data;
 	minimap(cub3d);
 	render(cub3d);
-	gettimeofday(&tv, NULL);
-	time = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+	/*
+	time = mlx_get_time() / 1000;
 	if (cub3d->time >= 0)
 	{
-		printf("FPS: %ld\n", 1000 / (time - cub3d->time));
+		printf("FPS: %f\n", 1000 / (time - cub3d->time));
 	}
 	cub3d->time = time;
+	*/
 }
