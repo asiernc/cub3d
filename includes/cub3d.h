@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/22 16:18:55 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/22 18:10:30 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define MAP_FLOOR_COLOR 0xFFFFFFFF
 # define MAP_PLAYER_COLOR 0xFF0000FF
 # define MAP_EMPTY_COLOR 0x0000000
+# define TEX_WIDTH 64
 
 enum	e_orientation
 {
@@ -112,7 +113,11 @@ typedef struct s_render
 	t_2dvectorf	delta_dist;
 	int			hit;
 	int			side;
+	int			line_height;
 	double		perp_wall_dist;
+	int			draw_start;
+	int			draw_end;
+	int			tex_x;
 	int			orientation;
 }	t_render;
 
@@ -169,8 +174,7 @@ void			minimap(t_cub3d *cub3d);
 
 void			render(t_cub3d *cub3d);
 int				set_orientation(t_cub3d *cub3d);
-void			draw_line(t_cub3d *cub3d, int x, int draw[2],
-					unsigned int color);
+void			draw_line(t_cub3d *cub3d, int x);
 
 // Controls
 
