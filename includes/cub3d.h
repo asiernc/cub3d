@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/22 18:10:30 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/23 17:35:43 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,6 @@ typedef struct s_mlx
 	mlx_image_t		*map_img;
 	double			map_size;
 	uint32_t		**img_arr[4];
-	mlx_image_t		no_img;
-	mlx_image_t		ea_img;
-	mlx_image_t		so_img;
-	mlx_image_t		we_img;
 	t_player_mlx	player;
 	int				mouse_x;
 }	t_mlx;
@@ -135,7 +131,6 @@ typedef struct s_cub3d
 // Parser map
 
 void			read_file(t_cub3d *cub3d, char *file_path);
-void			get_height_width(t_cub3d *cub3d, char *file_path);
 int				fill_data(t_cub3d *cub3d, char *line);
 void			fill_textures(t_cub3d *cub3d, char **line);
 void			fill_colors(t_cub3d *cub3d, char **line);
@@ -149,9 +144,9 @@ int				ft_strlen_map(char *str);
 char			*clean_spaces_str(char *str);
 int				check_map_line(char *line);
 int				check_required_data_for_map(t_cub3d *cub3d);
-void			check_wall_map(t_cub3d *cub3d);
+void			check_wall_map(t_cub3d *cub3d, char **map);
 void			check_inside_map(t_cub3d *cub3d);
-void			check_player(t_cub3d *cub3d);
+void			check_player(t_cub3d *cub3d, char **map);
 int				check_all_data(t_cub3d *cub3d);
 char			*prepare_line(t_cub3d *cub3d, char *str);
 void			test_print(t_data *data);
@@ -160,7 +155,6 @@ unsigned int	rgb_to_int(int red, int green, int blue);
 
 // MLX
 
-void			init_game_struct(t_cub3d *cub3d);
 void			load_texture(t_cub3d *cub3d);
 uint32_t		get_color_from_texture(t_cub3d *cub3d, int tex_x,
 					int tex_y, int orientation);
@@ -201,6 +195,5 @@ void			ft_put_error(t_cub3d *cub3d, const char *err_msg, bool flag);
 // Free
 void			ft_free_parser(t_cub3d *cub3d);
 void			ft_free_all(t_cub3d *cub3d);
-void			free_textures(t_cub3d *cub3d);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/03 20:31:11 by anovio-c          #+#    #+#              #
-#    Updated: 2024/07/18 20:55:45 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/07/23 18:16:57 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ endif
 # Commands and flags
 CC          = gcc
 INCLUDE     = includes/cub3d.h libs/libft/libft.h
-CFLAGS      = -Wall -Wextra -Werror -MMD -g #-fsanitize=address
+CFLAGS      = -Wall -Wextra -Werror -MMD #-g -fsanitize=address
 RM          = rm -rf
 
 # Cub3d files
@@ -43,11 +43,10 @@ SRCS        =	main.c 						\
 				parser_map/fill_colors.c 	\
 				parser_map/fill_textures.c 	\
 				parser_map/fill_map.c 		\
-				parser_map/map_utils.c 		\
+				parser_map/player.c 		\
 				controls/controls.c			\
 				controls/move.c				\
 				controls/cam.c				\
-				render/init.c				\
 				render/draw.c				\
 				render/render.c				\
 				render/textures.c 			\

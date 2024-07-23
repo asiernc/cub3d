@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 11:01:11 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/22 18:37:16 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/23 16:46:47 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,10 @@ static void	dda(t_cub3d *cub3d)
 			- cub3d->render.delta_dist.y;
 }
 
-static void	calc_height(t_cub3d *cub3d)
+static void	calc_texture(t_cub3d *cub3d)
 {
+	double	wall_x;
+
 	cub3d->render.line_height = (int)(HEIGHT / cub3d->render.perp_wall_dist);
 	cub3d->render.draw_start = -cub3d->render.line_height / 2 + HEIGHT / 2;
 	if (cub3d->render.draw_start < 0)
@@ -98,21 +100,15 @@ static void	calc_height(t_cub3d *cub3d)
 	cub3d->render.draw_end = cub3d->render.line_height / 2 + HEIGHT / 2;
 	if (cub3d->render.draw_end >= HEIGHT)
 		cub3d->render.draw_end = HEIGHT - 1;
-}
-
-static void	calc_texture(t_cub3d *cub3d)
-{
-	double 	wall_x;
-
 	cub3d->render.orientation = set_orientation(cub3d);
 	if (cub3d->render.side == 0)
-		wall_x = cub3d->mlx.player.pos.y + cub3d->render.perp_wall_dist
+		wall_x = cub3d->render.player.y + cub3d->render.perp_wall_dist
 			* cub3d->render.ray_dir.y;
 	else
-		wall_x = cub3d->mlx.player.pos.x + cub3d->render.perp_wall_dist
+		wall_x = cub3d->render.player.x + cub3d->render.perp_wall_dist
 			* cub3d->render.ray_dir.x;
 	wall_x -= floor(wall_x);
-	cub3d->render.tex_x = (int)(wall_x * TEX_WIDTH);
+	cub3d->render.tex_x = wall_x * TEX_WIDTH;
 	if ((cub3d->render.side == 0 && cub3d->render.ray_dir.x > 0)
 		|| (cub3d->render.side == 1 && cub3d->render.ray_dir.y < 0))
 		cub3d->render.tex_x = TEX_WIDTH - cub3d->render.tex_x - 1;
@@ -130,7 +126,6 @@ void	render(t_cub3d *cub3d)
 		init_values(cub3d, x);
 		set_direction(&cub3d->render);
 		dda(cub3d);
-		calc_height(cub3d);
 		calc_texture(cub3d);
 		draw_line(cub3d, x);
 	}

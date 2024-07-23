@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/18 12:06:53 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/23 16:33:44 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ char	*prepare_line(t_cub3d *cub3d, char *str)
 	char	*trimmed;
 	char	*clean;
 
-	trimmed = NULL;
-	clean = NULL;
 	trimmed = ft_strtrim(str, " ");
 	if (!trimmed)
 		ft_put_error(cub3d, "Malloc error on trim", false);
@@ -80,24 +78,20 @@ char	*clean_spaces_str(char *str)
 	res = ft_calloc(ft_count_word(str), sizeof(char));
 	if (!res)
 		return (NULL);
-	i = 0;
+	i = -1;
 	j = 0;
-	while (str[i])
+	while (str[++i])
 	{
-		if (str[i] <= 32 || str[i] == ',')
+		if ((str[i] <= 32 || str[i] == ',') && !flag)
 		{
-			if (!flag)
-			{
-				flag = 1;
-				res[j++] = ' ';
-			}
+			flag = 1;
+			res[j++] = ' ';
 		}
-		else
+		if (!(str[i] <= 32 || str[i] == ','))
 		{
 			flag = 0;
 			res[j++] = str[i];
 		}
-		i++;
 	}
 	return (res);
 }
@@ -116,27 +110,4 @@ void	init_parser_struct(t_data *data)
 	data->floor = 4294967295;
 	data->flag_map = 0;
 	data->flag_complete = 0;
-}
-
-void	test_print(t_data *data)
-{
-	int	i;
-
-	printf("NO PATH => %s\n", data->no_path);
-	printf("EA PATH => %s\n", data->ea_path);
-	printf("SO PATH => %s\n", data->so_path);
-	printf("WE PATH => %s\n", data->we_path);
-	printf("FLOOR COLOR => %u\n", data->floor);
-	printf("CEIL COLOR => %u\n", data->ceil);
-	i = 0;
-	if (data->map && data->map[0])
-	{
-		while (data->map[i])
-		{
-			printf("%s\n", data->map[i]);
-			i++;
-		}
-	}
-	printf("player {%d, %d}, View %c\n", data->player.pos.x,
-		data->player.pos.y, data->player.view);
 }
