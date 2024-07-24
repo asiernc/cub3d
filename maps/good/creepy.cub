@@ -1,7 +1,7 @@
-NO textures/simonkraft/respawn_anchor_side0.xpm42
-EA textures/simonkraft/respawn_anchor_side2.xpm42
-SO textures/simonkraft/respawn_anchor_side4.xpm42
-WE textures/simonkraft/respawn_anchor_side3.xpm42
+NO textures/barrel.xpm42
+EA textures/colorstone.xpm42
+SO textures/greenlight.xpm42
+WE textures/pillar.xpm42
 
 C 35,19,73
 F 15,6,40

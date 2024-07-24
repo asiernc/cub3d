@@ -12,14 +12,12 @@
 
 #include "../../includes/cub3d.h"
 
-static uint32_t	get_color(t_cub3d *cub3d, int tex_y, int side)
+static uint32_t	get_color(t_cub3d *cub3d, int tex_y)
 {
 	uint32_t	color;
 
 	color = cub3d->mlx.img_arr[cub3d->render.orientation]
 	[tex_y][cub3d->render.tex_x];
-	if (side)
-		color = (color >> 1) & 8355711;
 	return (color);
 }
 
@@ -40,8 +38,8 @@ void	draw_line(t_cub3d *cub3d, int x)
 		{
 			tex_y = (int)tex_pos & (TEX_WIDTH - 1);
 			tex_pos += step;
-			mlx_put_pixel(cub3d->mlx.render_img, x, y,
-				get_color(cub3d, tex_y, cub3d->render.side));
+			mlx_put_pixel(cub3d->mlx.render_img, x, y, 
+				get_color(cub3d, tex_y));
 		}
 		else if (y < HEIGHT / 2)
 			mlx_put_pixel(cub3d->mlx.render_img, x, y, cub3d->data.ceil);
