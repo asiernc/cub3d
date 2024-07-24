@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 12:18:21 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/23 18:10:56 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:38:21 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 void	ft_put_error(t_cub3d *cub3d, const char *err_msg, bool flag)
 {
-	ft_free_parser(cub3d);
+	if (cub3d)
+		ft_free_parser(cub3d);
 	if (flag)
 		ft_putendl_fd(err_msg, STDERR_FILENO);
 	else

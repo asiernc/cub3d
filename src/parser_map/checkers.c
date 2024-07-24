@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:33:46 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/23 16:43:24 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/24 15:24:35 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_map_line(char *line)
 		if (line[i] != '0' && line[i] != '1' && line[i] != 'N'
 			&& line[i] != 'S' && line[i] != 'E' && line[i] != 'W'
 			&& line[i] != ' ')
-			ft_put_error(NULL, "Incorrect char in map content", true);
+			ft_put_error(NULL, "Invalid char found in the file", true);
 		i++;
 	}
 	return (1);
