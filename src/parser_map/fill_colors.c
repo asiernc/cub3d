@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:33:46 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/22 16:00:28 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/26 15:44:35 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,19 @@ void	fill_colors(t_cub3d *cub3d, char **line)
 		ft_put_error(cub3d, "Error. Duplicate color.", true);
 }
 
-unsigned int	read_colors(t_cub3d *cub3d, char **line)
+unsigned int	rgb_to_int(int red, int green, int blue)
+{
+	unsigned int		color;
+
+	color = 0;
+	color |= blue;
+	color |= green << 8;
+	color |= red << 16;
+	color |= 255 << 24;
+	return (color);
+}
+
+long int	read_colors(t_cub3d *cub3d, char **line)
 {
 	int				color[3];
 	int				i;
@@ -96,17 +108,5 @@ unsigned int	read_colors(t_cub3d *cub3d, char **line)
 		i++;
 		j++;
 	}
-	return (color[0] << 24 | color[1] << 16 | color[2] << 8 | 255);
-}
-
-unsigned int	rgb_to_int(int red, int green, int blue)
-{
-	unsigned int		color;
-
-	color = 0;
-	color |= blue;
-	color |= green << 8;
-	color |= red << 16;
-	color |= 255 << 24;
-	return (color);
+	return ((long int)rgb_to_int(color[0], color[1], color[2]));
 }
