@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 11:01:11 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/23 16:46:47 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/27 18:22:05 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,11 @@ static void	calc_texture(t_cub3d *cub3d)
 
 void	render(t_cub3d *cub3d)
 {
-	int	x;
+	int			x;
 
+	cub3d->mlx.render_img = mlx_new_image(cub3d->win, WIDTH, HEIGHT);
+	if (!cub3d->mlx.render_img)
+		ft_put_error(cub3d, "MLX new image", false);
 	cub3d->render.player.x = cub3d->mlx.player.pos.x / (double)TILE_SIZE;
 	cub3d->render.player.y = cub3d->mlx.player.pos.y / (double)TILE_SIZE;
 	x = -1;

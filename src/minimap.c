@@ -6,20 +6,20 @@
 /*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 17:57:44 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/22 11:46:09 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/27 18:26:53 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 #include "../libs/libft/libft.h"
 
-static int	get_color(t_cub3d *cub3d, int map_x, int map_y)
+static int	get_color(t_cub3d *cub3d, int map_x, int map_y, mlx_image_t *img)
 {
 	int	x;
 	int	y;
 
-	x = map_x / ((cub3d->mlx.map_img->width + 0.0) / cub3d->data.width);
-	y = map_y / ((cub3d->mlx.map_img->height + 0.0) / cub3d->data.height);
+	x = map_x / ((img->width + 0.0) / cub3d->data.width);
+	y = map_y / ((img->height + 0.0) / cub3d->data.height);
 	if (cub3d->data.map[y][x] == '1')
 		return (MAP_WALL_COLOR);
 	if (cub3d->data.map[y][x] == '0')
@@ -37,7 +37,8 @@ static void	draw_map(t_cub3d *cub3d)
 	{
 		x = -1;
 		while (++x < (int)cub3d->mlx.map_img->width)
-			mlx_put_pixel(cub3d->mlx.map_img, x, y, get_color(cub3d, x, y));
+			mlx_put_pixel(cub3d->mlx.map_img, x, y,
+				get_color(cub3d, x, y, cub3d->mlx.map_img));
 	}
 }
 
@@ -62,6 +63,10 @@ static void	draw_player(t_cub3d *cub3d)
 
 void	minimap(t_cub3d *cub3d)
 {
+	cub3d->mlx.map_img = mlx_new_image(cub3d->win, cub3d->mlx.map_size * cub3d->data.width,
+			cub3d->mlx.map_size * cub3d->data.height);
+	if (!cub3d->mlx.map_img)
+		ft_put_error(cub3d, "MLX new image", false);
 	draw_map(cub3d);
 	draw_player(cub3d);
 	if (mlx_image_to_window(cub3d->win, cub3d->mlx.map_img, 0, 0) < 0)
@@ -79,9 +84,5 @@ void	init_minimap(t_cub3d *cub3d)
 		cub3d->mlx.map_size = size_x;
 	else
 		cub3d->mlx.map_size = size_y;
-	cub3d->mlx.map_img = mlx_new_image(cub3d->win,
-			cub3d->mlx.map_size * cub3d->data.width,
-			cub3d->mlx.map_size * cub3d->data.height);
-	if (!cub3d->mlx.map_img)
-		ft_put_error(cub3d, "MLX new image", false);
+	cub3d->mlx.map_img = NULL;
 }

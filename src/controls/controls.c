@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 20:59:20 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/22 16:21:19 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/27 18:29:33 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ void	on_key(mlx_key_data_t e, void *data)
 		cam_left(cub3d, KEY_ROT_SPEED);
 	else if (e.key == MLX_KEY_RIGHT)
 		cam_right(cub3d, KEY_ROT_SPEED);
-	else if (e.key == MLX_KEY_SPACE)
-		move_action(cub3d);
 }
 
 void	on_mouse_key(mouse_key_t button, action_t action, modifier_key_t mods,
@@ -62,8 +60,19 @@ int	on_close(t_cub3d *cub3d)
 	return (0);
 }
 
-void	on_frame(void *cub3d)
+void	on_frame(void *data)
 {
-	minimap(cub3d);
+	t_cub3d	*cub3d;
+
+	cub3d = data;
+	//minimap(cub3d);
 	render(cub3d);
+	if (cub3d->mlx.render_old_img)
+		mlx_delete_image(cub3d->win, cub3d->mlx.render_old_img);
+	cub3d->mlx.render_old_img = cub3d->mlx.render_img;
+	cub3d->mlx.render_img = NULL;
+	if (cub3d->mlx.map_old_img)
+		mlx_delete_image(cub3d->win, cub3d->mlx.map_old_img);
+	cub3d->mlx.map_old_img = cub3d->mlx.map_img;
+	cub3d->mlx.map_img = NULL;
 }

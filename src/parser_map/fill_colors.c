@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:33:46 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/26 15:44:35 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/27 18:01:55 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,5 @@ long int	read_colors(t_cub3d *cub3d, char **line)
 		i++;
 		j++;
 	}
-	return ((long int)rgb_to_int(color[0], color[1], color[2]));
+	return ((long int)color[0] << 24 | color[1] << 16 | color[2] << 8 | 255);
 }

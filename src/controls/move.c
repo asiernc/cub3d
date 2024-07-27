@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 21:32:35 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/20 17:05:14 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/27 18:06:44 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,4 @@ void	move_left(t_player_mlx *player, char **map)
 	if (map[y][player->pos.x / TILE_SIZE] == '0'
 			&& map[ny][player->pos.x / TILE_SIZE] == '0')
 		player->pos.y -= player->dir.x * MOVE_SPEED;
-}
-
-void	move_action(t_cub3d *cub3d)
-{
-	(void) cub3d;
-	printf("ACTION\n");
 }
