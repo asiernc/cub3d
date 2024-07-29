@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:30:32 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/27 18:19:37 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/29 11:57:07 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,7 @@ typedef struct s_player_mlx
 typedef struct s_mlx
 {
 	mlx_image_t		*render_img;
-	mlx_image_t		*map_img;
 	mlx_image_t		*render_old_img;
-	mlx_image_t		*map_old_img;
 	double			map_size;
 	uint32_t		**img_arr[4];
 	t_player_mlx	player;

@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 20:59:20 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/27 18:29:33 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/29 11:59:19 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,15 @@ void	on_frame(void *data)
 	t_cub3d	*cub3d;
 
 	cub3d = data;
-	//minimap(cub3d);
+	cub3d->mlx.render_img = mlx_new_image(cub3d->win, WIDTH, HEIGHT);
+	if (!cub3d->mlx.render_img)
+		ft_put_error(cub3d, "MLX new image", false);
 	render(cub3d);
+	minimap(cub3d);
+	if (mlx_image_to_window(cub3d->win, cub3d->mlx.render_img, 0, 0) < 0)
+		ft_put_error(cub3d, "MLX image to win", false);
 	if (cub3d->mlx.render_old_img)
 		mlx_delete_image(cub3d->win, cub3d->mlx.render_old_img);
 	cub3d->mlx.render_old_img = cub3d->mlx.render_img;
 	cub3d->mlx.render_img = NULL;
-	if (cub3d->mlx.map_old_img)
-		mlx_delete_image(cub3d->win, cub3d->mlx.map_old_img);
-	cub3d->mlx.map_old_img = cub3d->mlx.map_img;
-	cub3d->mlx.map_img = NULL;
 }

@@ -6,12 +6,12 @@
 #    By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/03 20:31:11 by anovio-c          #+#    #+#              #
-#    Updated: 2024/07/24 15:43:06 by anovio-c         ###   ########.fr        #
+#    Updated: 2024/07/29 12:03:41 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Setup
-NAME        = cub3d
+NAME        = cub3D
 LIBFT       = libs/libft/
 LIBFT_A     = $(addprefix $(LIBFT), libft.a)
 MLX_A       = build/libmlx42.a

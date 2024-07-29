@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 12:18:21 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/27 18:29:05 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/29 11:58:48 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,8 @@ static void	ft_free_mlx(t_cub3d *cub3d)
 		free_tex_arr(cub3d->mlx.img_arr[i]);
 	if (cub3d->mlx.render_old_img)
 		mlx_delete_image(cub3d->win, cub3d->mlx.render_old_img);
-	if (cub3d->mlx.map_old_img)
-		mlx_delete_image(cub3d->win, cub3d->mlx.map_old_img);
 	if (cub3d->mlx.render_img)
 		mlx_delete_image(cub3d->win, cub3d->mlx.render_img);
-	if (cub3d->mlx.map_img)
-		mlx_delete_image(cub3d->win, cub3d->mlx.map_img);
 }
 
 void	ft_free_all(t_cub3d *cub3d)

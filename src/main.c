@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:02:56 by asiercara         #+#    #+#             */
-/*   Updated: 2024/07/27 17:21:01 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/29 11:58:28 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static void	init_structs(t_cub3d *cub3d)
 	cub3d->mlx.player.pos.y = (cub3d->data.player.pos.y + 1.0)
 		* TILE_SIZE - TILE_SIZE / 2;
 	cub3d->mlx.render_img = NULL;
-	cub3d->mlx.map_img = NULL;
 }
 
 static void	ft_init_mlx(t_cub3d *cub3d)
