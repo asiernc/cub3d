@@ -6,7 +6,7 @@
 #    By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/03 20:31:11 by anovio-c          #+#    #+#              #
-#    Updated: 2024/07/29 12:03:41 by molasz-a         ###   ########.fr        #
+#    Updated: 2024/07/29 12:26:59 by molasz-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ endif
 # Commands and flags
 CC          = gcc
 INCLUDE     = includes/cub3d.h libs/libft/libft.h
-CFLAGS      = -Wall -Wextra -Werror -MMD #-g #-fsanitize=address
+CFLAGS      = -Wall -Wextra -Werror -MMD #-g -fsanitize=address
 RM          = rm -rf
 
 # Cub3d files
@@ -105,4 +105,4 @@ re:         fclean all
 
 -include $(DEPS)
 
-.PHONY:     all clean fclean re
+.PHONY:     all clean fclean re dir
