@@ -6,7 +6,7 @@
 /*   By: molasz-a <molasz-a@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 17:57:44 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/29 11:56:57 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/29 12:17:37 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@ static void	draw_map(t_cub3d *cub3d)
 		{
 			map.x = coord.x / ((double)max.x / cub3d->data.width);
 			map.y = coord.y / ((double)max.y / cub3d->data.height);
-
 			if (cub3d->data.map[map.y][map.x] == '1')
-				mlx_put_pixel(cub3d->mlx.render_img, coord.x, coord.y, 
+				mlx_put_pixel(cub3d->mlx.render_img, coord.x, coord.y,
 					MAP_WALL_COLOR);
 			else if (cub3d->data.map[map.y][map.x] == '0')
 				mlx_put_pixel(cub3d->mlx.render_img, coord.x, coord.y,
