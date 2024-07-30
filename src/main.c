@@ -48,6 +48,8 @@ static void	init_structs(t_cub3d *cub3d)
 		* TILE_SIZE - TILE_SIZE / 2;
 	cub3d->mlx.player.pos.y = (cub3d->data.player.pos.y + 1.0)
 		* TILE_SIZE - TILE_SIZE / 2;
+	cub3d->mlx.render_img = NULL;
+	cub3d->mlx.render_old_img = NULL;
 }
 
 static void	ft_init_mlx(t_cub3d *cub3d)
@@ -60,9 +62,6 @@ static void	ft_init_mlx(t_cub3d *cub3d)
 	mlx_mouse_hook(cub3d->win, &on_mouse_key, (void *)cub3d);
 	mlx_cursor_hook(cub3d->win, &on_mouse_move, (void *)cub3d);
 	mlx_loop_hook(cub3d->win, &on_frame, (void *)cub3d);
-	cub3d->mlx.render_img = mlx_new_image(cub3d->win, WIDTH, HEIGHT);
-	if (!cub3d->mlx.render_img)
-		ft_put_error(cub3d, "MLX new image", false);
 }
 
 int	main(int argc, char **argv)

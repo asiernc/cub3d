@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 20:06:28 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/22 18:32:10 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/27 18:19:24 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	draw_line(t_cub3d *cub3d, int x)
 		{
 			tex_y = (int)tex_pos & (TEX_WIDTH - 1);
 			tex_pos += step;
-			mlx_put_pixel(cub3d->mlx.render_img, x, y, 
+			mlx_put_pixel(cub3d->mlx.render_img, x, y,
 				get_color(cub3d, tex_y));
 		}
 		else if (y < HEIGHT / 2)

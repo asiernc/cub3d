@@ -76,8 +76,8 @@ typedef struct s_data
 	char					*ea_path;
 	char					*so_path;
 	char					*we_path;
-	unsigned int			ceil;
-	unsigned int			floor;
+	long int				ceil;
+	long int				floor;
 	int						flag_map;
 	int						flag_complete;
 }	t_data;
@@ -92,7 +92,7 @@ typedef struct s_player_mlx
 typedef struct s_mlx
 {
 	mlx_image_t		*render_img;
-	mlx_image_t		*map_img;
+	mlx_image_t		*render_old_img;
 	double			map_size;
 	uint32_t		**img_arr[4];
 	t_player_mlx	player;
@@ -149,15 +149,11 @@ void			check_inside_map(t_cub3d *cub3d);
 void			check_player(t_cub3d *cub3d, char **map);
 int				check_all_data(t_cub3d *cub3d);
 char			*prepare_line(t_cub3d *cub3d, char *str);
-void			test_print(t_data *data);
-unsigned int	read_colors(t_cub3d *cub3d, char **line);
-unsigned int	rgb_to_int(int red, int green, int blue);
+long int		read_colors(t_cub3d *cub3d, char **line);
 
 // MLX
 
 void			load_texture(t_cub3d *cub3d);
-uint32_t		get_color_from_texture(t_cub3d *cub3d, int tex_x,
-					int tex_y, int orientation);
 
 // MiniMap
 
@@ -183,16 +179,17 @@ void			move_front(t_player_mlx *player, char **map);
 void			move_right(t_player_mlx *player, char **map);
 void			move_left(t_player_mlx *player, char **map);
 void			move_back(t_player_mlx *player, char **map);
-void			move_action(t_cub3d *cub3d);
 
 void			cam_left(t_cub3d *cub3d, double rot_speed);
 void			cam_right(t_cub3d *cub3d, double rot_speed);
 void			cam_mouse(t_cub3d *cub3d, int x);
 
 // Handle errors
+
 void			ft_put_error(t_cub3d *cub3d, const char *err_msg, bool flag);
 
 // Free
+
 void			ft_free_parser(t_cub3d *cub3d);
 void			ft_free_all(t_cub3d *cub3d);
 

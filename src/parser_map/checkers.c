@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:33:46 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/24 15:24:35 by anovio-c         ###   ########.fr       */
+/*   Updated: 2024/07/26 15:40:50 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 
 int	check_required_data_for_map(t_cub3d *cub3d)
 {
-	if (cub3d->data.floor == 4294967295
-		|| cub3d->data.ceil == 4294967295)
+	if (cub3d->data.floor == -1
+		|| cub3d->data.ceil == -1)
+	{
+		printf("CEIL %lu    FLOOR %lu\n", cub3d->data.ceil, cub3d->data.floor);
 		ft_put_error(cub3d, "Map data error", true);
+	}
 	else if (!cub3d->data.no_path || !cub3d->data.we_path
 		|| !cub3d->data.ea_path || !cub3d->data.so_path)
 		ft_put_error(cub3d, "Missing orientation texture", true);
@@ -109,8 +112,8 @@ int	check_all_data(t_cub3d *cub3d)
 	int	flag;
 
 	flag = 0;
-	if (cub3d->data.floor == 4294967295
-		|| cub3d->data.ceil == 4294967295)
+	if (cub3d->data.floor == -1
+		|| cub3d->data.ceil == -1)
 		flag++;
 	if (!cub3d->data.no_path || !cub3d->data.ea_path
 		|| !cub3d->data.we_path || !cub3d->data.so_path)

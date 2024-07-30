@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:31:18 by anovio-c          #+#    #+#             */
-/*   Updated: 2024/07/23 16:33:44 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/26 15:40:40 by anovio-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,8 @@ void	init_parser_struct(t_data *data)
 	data->so_path = NULL;
 	data->we_path = NULL;
 	data->map_file_path = NULL;
-	data->ceil = 4294967295;
-	data->floor = 4294967295;
+	data->ceil = -1;
+	data->floor = -1;
 	data->flag_map = 0;
 	data->flag_complete = 0;
 }

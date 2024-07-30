@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 # Setup
-NAME        = cub3d
+NAME        = cub3D
 LIBFT       = libs/libft/
 LIBFT_A     = $(addprefix $(LIBFT), libft.a)
 MLX_A       = build/libmlx42.a
@@ -105,4 +105,4 @@ re:         fclean all
 
 -include $(DEPS)
 
-.PHONY:     all clean fclean re
+.PHONY:     all clean fclean re dir

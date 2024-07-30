@@ -6,7 +6,7 @@
 /*   By: anovio-c <anovio-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 11:01:11 by molasz-a          #+#    #+#             */
-/*   Updated: 2024/07/23 16:46:47 by molasz-a         ###   ########.fr       */
+/*   Updated: 2024/07/29 11:58:02 by molasz-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ static void	calc_texture(t_cub3d *cub3d)
 
 void	render(t_cub3d *cub3d)
 {
-	int	x;
+	int			x;
 
 	cub3d->render.player.x = cub3d->mlx.player.pos.x / (double)TILE_SIZE;
 	cub3d->render.player.y = cub3d->mlx.player.pos.y / (double)TILE_SIZE;
@@ -129,6 +129,4 @@ void	render(t_cub3d *cub3d)
 		calc_texture(cub3d);
 		draw_line(cub3d, x);
 	}
-	if (mlx_image_to_window(cub3d->win, cub3d->mlx.render_img, 0, 0) < 0)
-		ft_put_error(cub3d, "MLX image to win", false);
 }
