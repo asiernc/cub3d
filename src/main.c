@@ -54,7 +54,7 @@ static void	init_structs(t_cub3d *cub3d)
 
 static void	ft_init_mlx(t_cub3d *cub3d)
 {
-	cub3d->win = mlx_init(WIDTH, HEIGHT, "CUB3D", false);
+	cub3d->win = mlx_init(WIDTH, HEIGHT, "CUB3D - molasz-a / anovio-c", false);
 	if (!cub3d->win)
 		ft_put_error(cub3d,
 			"Error establishing a connection to the graphics system.", true);
