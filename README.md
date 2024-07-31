@@ -3,7 +3,7 @@
     <br>Cub3D</br>
 </h1>
 <p align="center">
-    <img src="https://img.shields.io/badge/Barcelona-100000?style=flat-square&logo=42&logoColor=white&labelColor=000000&color=000000" alt="42 Barcelona"/>
+    <img src="./cub3d.png" alt="cub3d logo"/>
 </p>
 <p align="center">
     <img src="https://img.shields.io/badge/Barcelona-100000?style=flat-square&logo=42&logoColor=white&labelColor=000000&color=000000" alt="42 Barcelona"/>
